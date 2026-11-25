@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Goldberg Beds</title>
+<meta name="description" content="Goldberg Beds — loft beds, bunk beds and kids' beds, made to order. Shop the collection and order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a quiet gallery that happens to sell — calm, unhurried, never shouting
+   IDEA: a furniture maker's portfolio book, opened on the shop counter
+   PICTURE: their own work — tall, slow-moving gallery of the best pieces, then the full collection
+   COLOUR and TYPE: warm white, charcoal ink, champagne hairlines; Cormorant titles, Jost body
+   LAYOUT: Takealot's bones (search, heart, cart, category rail, grid, drawer) dressed in silence */
+:root{color-scheme:light dark;
+ --bg:light-dark(#fbfaf8,#121110);--bg2:light-dark(#f3f0eb,#1a1917);--card:light-dark(#ffffff,#1d1b19);
+ --ink:light-dark(#1d1c1a,#eeeae3);--soft:light-dark(#76706768,#a49d92);--soft:light-dark(#77716a,#a49d92);
+ --line:light-dark(#e8e3dc,#2e2b27);--gold:light-dark(#9a7f52,#c8ad7b);--veil:light-dark(rgba(20,18,16,.38),rgba(0,0,0,.6))}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 16px/1.6 Jost,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(38px,5.4vw,58px)}h2{font-size:clamp(30px,3.6vw,42px)}h3{font-size:22px;line-height:1.15}
+p{margin:0}
+img{display:block;max-width:100%}
+.wrap{max-width:1320px;margin:0 auto;padding:0 max(4vw,16px)}
+.ib{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative;border-radius:50%;transition:background .25s}
+.ib:hover{background:var(--bg2)}
+.ib svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.3}
+.badge{position:absolute;top:5px;right:3px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--ink);color:var(--bg);font:500 10.5px/17px Jost,sans-serif;text-align:center}
+.badge:empty{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;font-weight:400;font-size:15px;cursor:pointer;transition:background .3s,color .3s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.btn.wide{width:100%}
+:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+/* header */
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding-top:12px;padding-bottom:12px}
+.logo{font:600 25px/1 "Cormorant Garamond",serif;text-decoration:none;white-space:nowrap}
+.search{position:relative;max-width:560px;width:100%;justify-self:center}
+.search input{width:100%;height:44px;border:1px solid var(--line);background:var(--card);padding:0 16px 0 42px;font-size:16px;border-radius:0;outline:none;transition:border-color .25s}
+.search input:focus{border-color:var(--ink)}
+.search svg{position:absolute;left:14px;top:13px;width:17px;height:17px;fill:none;stroke:var(--soft);stroke-width:1.4}
+.icons{display:flex;gap:2px}
+.cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
+.cats::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:36px;padding:0 16px;border:1px solid transparent;background:none;cursor:pointer;font-size:14.5px;color:var(--soft);transition:color .25s,border-color .25s}
+.chip:hover{color:var(--ink)}
+.chip[aria-pressed=true]{color:var(--ink);border-color:var(--ink)}
+/* showcase */
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-top:clamp(36px,5vw,64px);padding-bottom:26px}
+.intro p{color:var(--soft);max-width:440px;margin-top:14px}
+.ctrl{display:flex;align-items:center;gap:6px;color:var(--soft);font-size:14px}
+.ctrl .ib{border:1px solid var(--line)}
+.show{display:flex;gap:clamp(12px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(4vw,16px) 8px;scroll-padding:0 max(4vw,16px)}
+.show::-webkit-scrollbar{display:none}
+.slide{flex:0 0 clamp(270px,30vw,420px);scroll-snap-align:start;cursor:pointer;border:0;padding:0;background:none;text-align:left}
+.slide .ph{aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
+.slide img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.6,.2,1),opacity .8s;opacity:0}
+.slide img.in{opacity:1}
+.slide:hover img{transform:scale(1.035)}
+.slide .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 2px 0}
+.slide .cap span{color:var(--soft);font-size:13.5px;white-space:nowrap}
+.slide h3{font-size:23px}
+/* shop */
+.shop{padding-top:clamp(56px,7vw,100px);padding-bottom:clamp(56px,7vw,100px)}
+.shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:28px}
+.shophead p{color:var(--soft);font-size:14.5px;margin-top:8px}
+select.sort{height:42px;border:1px solid var(--line);background:var(--card);padding:0 12px;font-size:15px;border-radius:0}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,30px) clamp(12px,1.6vw,24px)}
+.card{display:flex;flex-direction:column}
+.card .ph{position:relative;aspect-ratio:4/5;background:var(--bg2);overflow:hidden;cursor:pointer}
+.card .ph img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s,transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.card .ph img.in{opacity:1}
+.card .ph:hover img{transform:scale(1.03)}
+.fav{position:absolute;top:8px;right:8px;background:color-mix(in srgb,var(--bg) 82%,transparent)}
+.fav:hover{background:var(--bg)}
+.fav[aria-pressed=true] svg{fill:var(--ink)}
+.more{position:absolute;left:10px;bottom:10px;font-size:12.5px;padding:3px 9px;background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--ink)}
+.card .meta{padding:14px 2px 0;display:flex;flex-direction:column;gap:4px;flex:1}
+.card .cat{font-size:13px;color:var(--soft)}
+.card h3{font-size:21px;cursor:pointer}
+.price{font-size:15.5px;font-weight:400;white-space:nowrap}
+.price.ask{color:var(--soft);font-weight:300}
+.card .add{margin-top:12px;min-height:42px;font-size:14.5px}
+.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--soft)}
+/* overlay, sheet, drawer */
+.veil{position:fixed;inset:0;background:var(--veil);opacity:0;pointer-events:none;transition:opacity .45s;z-index:40}
+.veil.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:50;inset:4vh 4vw;max-width:1180px;margin:0 auto;background:var(--bg);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .45s,transform .45s;overflow:hidden}
+.sheet.on{opacity:1;transform:none;pointer-events:auto}
+.gal{position:relative;background:var(--bg2);display:flex;flex-direction:column;min-height:0}
+.track{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;min-height:0}
+.track::-webkit-scrollbar{display:none}
+.track figure{flex:0 0 100%;margin:0;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,28px)}
+.track img{max-height:100%;max-width:100%;object-fit:contain}
+.thumbs{display:flex;gap:8px;padding:10px clamp(10px,2vw,28px) 16px;overflow-x:auto}
+.thumbs button{flex:none;width:58px;height:58px;padding:0;border:1px solid transparent;background:none;cursor:pointer;opacity:.55;transition:opacity .3s}
+.thumbs button[aria-current=true]{opacity:1;border-color:var(--ink)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.gal .nav{position:absolute;top:50%;transform:translateY(-50%);background:color-mix(in srgb,var(--bg) 80%,transparent)}
+.gal .prev{left:12px}.gal .next{right:12px}
+.info{padding:clamp(24px,3.4vw,52px);overflow-y:auto;display:flex;flex-direction:column;gap:16px}
+.info .cat{color:var(--soft);font-size:14px}
+.info .price{font-size:19px}
+.info .desc{color:var(--soft)}
+.feats{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.feats li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.feats li::before{content:"";display:inline-block;width:14px;height:1px;background:var(--gold);vertical-align:middle;margin-right:12px}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--soft)}
+.f input,.f textarea{border:1px solid var(--line);background:var(--card);padding:11px 13px;font-size:16px;color:var(--ink);border-radius:0;outline:none;resize:vertical}
+.f input:focus,.f textarea:focus{border-color:var(--ink)}
+.row{display:flex;gap:10px;align-items:stretch}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line)}
+.qty button{width:40px;height:44px;border:0;background:none;cursor:pointer;font-size:18px}
+.qty span{min-width:26px;text-align:center;font-size:15px}
+.close{position:absolute;top:10px;right:10px;z-index:2;background:color-mix(in srgb,var(--bg) 85%,transparent)}
+.asklink{font-size:14.5px;text-decoration:none;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:2px}
+.drawer{position:fixed;z-index:50;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;transform:translateX(102%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.drawer.on{transform:none}
+.dh{position:sticky;top:0;z-index:1;background:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.db{flex:1 0 auto;padding:8px 22px 22px}
+.df{border-top:1px solid var(--line);padding:18px 22px 22px;display:flex;flex-direction:column;gap:12px}
+.line{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+.line img{width:72px;height:88px;object-fit:cover;background:var(--bg2);cursor:pointer}
+.line h3{font-size:19px}
+.line small{display:block;color:var(--soft);font-size:13px;margin-top:3px}
+.line .x{font-size:13px;color:var(--soft);background:none;border:0;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.line .qty button{width:34px;height:36px}
+.sum{display:flex;justify-content:space-between;font-size:16px}
+.sum b{font-weight:400}
+.note{color:var(--soft);font-size:13.5px}
+.done{text-align:center;padding:40px 6px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.done .ref{font:500 26px "Cormorant Garamond",serif}
+.toast{position:fixed;z-index:60;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:12px 20px;font-size:14.5px;opacity:0;transition:opacity .4s,transform .4s;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+/* bands */
+.how{background:var(--bg2);padding:clamp(56px,7vw,96px) 0}
+.how .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,60px)}
+.how h3{font-size:26px;margin-bottom:8px}.how p{color:var(--soft)}
+.how .k{display:block;width:28px;height:1px;background:var(--gold);margin-bottom:18px}
+footer{border-top:1px solid var(--line);padding:40px 0 30px;font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+footer .logo{font-size:30px}
+footer p{color:var(--soft);margin-top:8px;max-width:360px}
+footer nav{display:flex;flex-direction:column;gap:6px;text-align:right}
+footer a{text-decoration:none;color:var(--soft)}footer a:hover{color:var(--ink)}
+footer .by{width:100%;border-top:1px solid var(--line);padding-top:18px;margin-top:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--soft);font-size:13px}
+footer .by a{color:var(--gold)}
+@media(max-width:1060px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:860px){
+ .sheet{inset:0;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,56vh) minmax(0,1fr);overflow:hidden}
+ .info{gap:14px}
+ .how .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:720px){
+ .toast{bottom:auto;top:16px}
+ .bar{grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
+ .search{grid-column:1/-1;grid-row:2;max-width:none}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .card h3{font-size:18px}.card .add{font-size:13.5px;padding:0 10px}
+ .slide{flex-basis:78vw}
+ footer nav{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap bar">
+  <a class="logo" href="#top" id="top">Goldberg Beds</a>
+  <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Search loft beds, bunks, storage…" aria-label="Search the collection" autocomplete="off"></label>
+  <div class="icons">
+   <button class="ib" id="openFav" aria-label="Favourites"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg><span class="badge" id="favN"></span></button>
+   <button class="ib" id="openCart" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="badge" id="cartN"></span></button>
+  </div>
+ </div>
+ <nav class="wrap cats" id="cats" aria-label="Categories"></nav>
+</header>
+
+<main>
+ <section aria-labelledby="rw">
+  <div class="wrap intro">
+   <div>
+    <h1 id="rw">Recent work</h1>
+    <p>Loft beds, bunks and children's beds, built to order. A few of the pieces we're proudest of.</p>
+   </div>
+   <div class="ctrl"><span id="pos" aria-live="polite"></span>
+    <button class="ib" id="sPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button>
+    <button class="ib" id="sNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button>
+   </div>
+  </div>
+  <div class="show" id="show" tabindex="0" aria-label="Recent work gallery"></div>
+ </section>
+
+ <section class="wrap shop" id="shop" aria-labelledby="ct">
+  <div class="shophead">
+   <div><h2 id="ct">The collection</h2><p id="count"></p></div>
+   <select class="sort" id="sort" aria-label="Sort">
+    <option value="feat">Featured</option><option value="az">Name, A to Z</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option>
+   </select>
+  </div>
+  <div class="grid" id="grid"></div>
+ </section>
+
+ <section class="how" aria-label="How ordering works">
+  <div class="wrap">
+   <div><span class="k"></span><h3>Choose</h3><p>Save favourites as you browse and add the pieces you love to your cart.</p></div>
+   <div><span class="k"></span><h3>Tell us</h3><p>Note any size, colour or change you'd like. Every piece is built to order.</p></div>
+   <div><span class="k"></span><h3>Confirm</h3><p>Send your order and we'll confirm price and delivery with you on WhatsApp.</p></div>
+  </div>
+ </section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div><span class="logo">Goldberg Beds</span><p>Loft beds, bunk beds and children's beds, built to order.</p></div>
+  <nav aria-label="Footer"><a id="waFoot" href="#">WhatsApp +27 78 067 9984</a><a href="https://wa.me/c/27780679984">WhatsApp catalogue</a><a href="#shop">The collection</a></nav>
+  <div class="by"><span>© <span id="yr">2026</span> Goldberg Beds</span><span>Website by <a href="https://tamany.tech">TAMANY.TECH</a></span></div>
+ </div>
+</footer>
+
+<div class="veil" id="veil"></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="pName">
+ <button class="ib close" id="pClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+ <div class="gal">
+  <div class="track" id="track"></div>
+  <button class="ib nav prev" id="gPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button>
+  <button class="ib nav next" id="gNext" aria-label="Next photo"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button>
+  <div class="thumbs" id="thumbs"></div>
+ </div>
+ <div class="info">
+  <span class="cat" id="pCat"></span>
+  <h2 id="pName"></h2>
+  <span class="price" id="pPrice"></span>
+  <p class="desc" id="pDesc"></p>
+  <ul class="feats" id="pFeats"></ul>
+  <label class="f">Size, colour or changes (optional)<textarea id="pNote" rows="2" maxlength="300" placeholder="e.g. single over double, white"></textarea></label>
+  <div class="row">
+   <div class="qty"><button id="qm" aria-label="Fewer">−</button><span id="qv">1</span><button id="qp" aria-label="More">+</button></div>
+   <button class="btn" id="pAdd" style="flex:1">Add to cart</button>
+   <button class="ib fav" id="pFav" style="position:static;border:1px solid var(--line);width:46px;height:46px;border-radius:0" aria-label="Save to favourites"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg></button>
+  </div>
+  <a class="asklink" id="pAsk" href="#">Ask about this piece on WhatsApp</a>
+ </div>
+</div>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+ <div class="dh"><h2 id="dTitle" style="font-size:28px"></h2><button class="ib" id="dClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+ <div class="db" id="dBody"></div>
+ <div class="df" id="dFoot"></div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="products.js"></script>
+<script>
+{
+/* ---------- settings ---------- */
+const CONFIG = {
+  pb: '',               // PocketBase URL, e.g. 'https://goldberg.pockethost.io' — leave '' to use products.js
+  wa: '27780679984'     // WhatsApp number, international format, no +
+};
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = n => 'R ' + Number(n).toLocaleString('en-ZA', {maximumFractionDigits: 0});
+const priceHTML = p => p.price ? `<span class="price">${money(p.price)}</span>` : `<span class="price ask">Price on request</span>`;
+const store = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} }
+};
+const waLink = t => `https://wa.me/${CONFIG.wa}?text=${encodeURIComponent(t)}`;
+const heart = '<svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>';
+const fadeIn = root => root.querySelectorAll('img').forEach(i => { const on = () => i.classList.add('in'); i.complete ? on() : i.addEventListener('load', on, {once: true}); });
+
+/* ---------- state ---------- */
+let products = [];
+let cart = store.get('gb_cart', []);   // [{slug, qty, note}]
+let favs = store.get('gb_fav', []);    // [slug]
+let cat = 'All', query = '', sortBy = 'feat';
+let current = null, qty = 1;
+const bySlug = s => products.find(p => p.slug === s);
+
+/* ---------- data layer (PocketBase or local) ---------- */
+async function loadProducts() {
+  if (CONFIG.pb) {
+    try {
+      const r = await fetch(`${CONFIG.pb}/api/collections/products/records?perPage=500&sort=sort`);
+      const j = await r.json();
+      return j.items.map(x => ({
+        slug: x.slug, name: x.name, category: x.category, price: x.price || null,
+        description: x.description, features: x.features || [], featured: !!x.featured, sort: x.sort,
+        images: (x.photos && x.photos.length) ? x.photos.map(f => `${CONFIG.pb}/api/files/${x.collectionId}/${x.id}/${f}`) : (x.images || [])
+      }));
+    } catch (e) { console.warn('Backend unreachable, using local catalogue', e); }
+  }
+  return (window.GB_PRODUCTS || []).filter(p => p.active !== false);
+}
+async function saveOrder(order) {
+  const log = store.get('gb_orders', []); log.unshift(order); store.set('gb_orders', log.slice(0, 20));
+  if (!CONFIG.pb) return true;
+  try {
+    const r = await fetch(`${CONFIG.pb}/api/collections/orders/records`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...order, status: 'new'})});
+    return r.ok;
+  } catch { return false; }
+}
+
+/* ---------- toast ---------- */
+let tt;
+function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2400); }
+
+/* ---------- counts ---------- */
+function counts() {
+  const n = cart.reduce((a, l) => a + l.qty, 0);
+  $('#cartN').textContent = n || ''; $('#favN').textContent = favs.length || '';
+  store.set('gb_cart', cart); store.set('gb_fav', favs);
+}
+
+/* ---------- showcase ---------- */
+function renderShow() {
+  const f = products.filter(p => p.featured);
+  $('#show').innerHTML = f.map(p => `
+    <button class="slide" data-open="${esc(p.slug)}" aria-label="${esc(p.name)}">
+      <div class="ph"><img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></div>
+      <div class="cap"><h3>${esc(p.name)}</h3><span>${esc(p.category)}</span></div>
+    </button>`).join('');
+  fadeIn($('#show')); updatePos();
+}
+const show = $('#show');
+const slideW = () => { const s = show.querySelector('.slide'); return s ? s.getBoundingClientRect().width + parseFloat(getComputedStyle(show).columnGap || 16) : 300; };
+function updatePos() {
+  const n = show.children.length; if (!n) return;
+  const i = Math.min(n, Math.round(show.scrollLeft / slideW()) + 1);
+  $('#pos').textContent = `${i} of ${n}`;
+}
+function step(d) {
+  const max = show.scrollWidth - show.clientWidth - 4;
+  if (d > 0 && show.scrollLeft >= max) show.scrollTo({left: 0, behavior: 'smooth'});
+  else show.scrollBy({left: d * slideW(), behavior: 'smooth'});
+}
+$('#sPrev').addEventListener('click', () => step(-1));
+$('#sNext').addEventListener('click', () => step(1));
+show.addEventListener('scroll', () => requestAnimationFrame(updatePos), {passive: true});
+show.addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+let paused = false, auto;
+['pointerenter', 'touchstart', 'focusin'].forEach(ev => show.addEventListener(ev, () => paused = true, {passive: true}));
+['pointerleave', 'focusout'].forEach(ev => show.addEventListener(ev, () => paused = false));
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) auto = setInterval(() => { if (!paused && !document.hidden && !$('#veil').classList.contains('on')) step(1); }, 6500);
+
+/* ---------- categories ---------- */
+function renderCats() {
+  const list = ['All', ...new Set(products.map(p => p.category))];
+  $('#cats').innerHTML = list.map(c => `<button class="chip" data-cat="${esc(c)}" aria-pressed="${c === cat}">${esc(c)}</button>`).join('');
+}
+$('#cats').addEventListener('click', e => {
+  const b = e.target.closest('[data-cat]'); if (!b) return;
+  cat = b.dataset.cat; renderCats(); renderGrid();
+  document.getElementById('shop').scrollIntoView({behavior: 'smooth'});
+});
+
+/* ---------- grid ---------- */
+function filtered() {
+  const q = query.trim().toLowerCase();
+  let list = products.filter(p => (cat === 'All' || p.category === cat) &&
+    (!q || [p.name, p.category, p.description, ...(p.features || [])].join(' ').toLowerCase().includes(q)));
+  const priced = (a, b, dir) => (a.price == null) - (b.price == null) || dir * ((a.price || 0) - (b.price || 0));
+  if (sortBy === 'az') list.sort((a, b) => a.name.localeCompare(b.name));
+  else if (sortBy === 'lo') list.sort((a, b) => priced(a, b, 1));
+  else if (sortBy === 'hi') list.sort((a, b) => priced(a, b, -1));
+  else list.sort((a, b) => (b.featured - a.featured) || (a.sort - b.sort));
+  return list;
+}
+function renderGrid() {
+  const list = filtered();
+  $('#count').textContent = `${list.length} ${list.length === 1 ? 'piece' : 'pieces'}${cat !== 'All' ? ' in ' + cat : ''}${query ? ` matching “${query.trim()}”` : ''}`;
+  $('#grid').innerHTML = list.length ? list.map(p => `
+    <article class="card">
+      <div class="ph" data-open="${esc(p.slug)}">
+        <img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy">
+        <button class="ib fav" data-fav="${esc(p.slug)}" aria-pressed="${favs.includes(p.slug)}" aria-label="Save ${esc(p.name)}">${heart}</button>
+        ${p.images.length > 1 ? `<span class="more">${p.images.length} photos</span>` : ''}
+      </div>
+      <div class="meta">
+        <span class="cat">${esc(p.category)}</span>
+        <h3 data-open="${esc(p.slug)}">${esc(p.name)}</h3>
+        ${priceHTML(p)}
+        <button class="btn ghost add" data-add="${esc(p.slug)}">Add to cart</button>
+      </div>
+    </article>`).join('') : `<p class="empty">Nothing matches that yet. Try another word, or <a href="${waLink('Hi Goldberg Beds, I am looking for something specific:')}">ask us on WhatsApp</a>.</p>`;
+  fadeIn($('#grid'));
+}
+let qt;
+$('#q').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { query = e.target.value; renderGrid(); }, 160); });
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('shop').scrollIntoView({behavior: 'smooth'}); });
+$('#sort').addEventListener('change', e => { sortBy = e.target.value; renderGrid(); });
+
+/* ---------- cart & favourites actions ---------- */
+function addToCart(slug, n = 1, note = '') {
+  const l = cart.find(x => x.slug === slug && (x.note || '') === note);
+  l ? l.qty += n : cart.push({slug, qty: n, note});
+  counts(); toast(`${bySlug(slug).name} added to cart`);
+  if ($('#drawer').classList.contains('on') && mode === 'cart') renderDrawer();
+}
+function toggleFav(slug) {
+  const i = favs.indexOf(slug);
+  i > -1 ? favs.splice(i, 1) : favs.push(slug);
+  counts();
+  document.querySelectorAll(`[data-fav="${CSS.escape(slug)}"]`).forEach(b => b.setAttribute('aria-pressed', favs.includes(slug)));
+  if (current && current.slug === slug) $('#pFav').setAttribute('aria-pressed', favs.includes(slug));
+  toast(i > -1 ? 'Removed from favourites' : 'Saved to favourites');
+  if ($('#drawer').classList.contains('on') && mode === 'fav') renderDrawer();
+}
+document.addEventListener('click', e => {
+  const f = e.target.closest('[data-fav]'); if (f) { e.stopPropagation(); toggleFav(f.dataset.fav); return; }
+  const a = e.target.closest('[data-add]'); if (a) { addToCart(a.dataset.add); return; }
+  const o = e.target.closest('[data-open]'); if (o) openProduct(o.dataset.open);
+});
+
+/* ---------- veil / layers ---------- */
+function layer(on) { $('#veil').classList.toggle('on', on); document.body.classList.toggle('lock', on); }
+$('#veil').addEventListener('click', () => { closeProduct(); closeDrawer(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeProduct(); closeDrawer(); }
+  if ($('#sheet').classList.contains('on')) { if (e.key === 'ArrowRight') gal(1); if (e.key === 'ArrowLeft') gal(-1); }
+});
+
+/* ---------- product sheet ---------- */
+const track = $('#track');
+function openProduct(slug) {
+  const p = bySlug(slug); if (!p) return;
+  closeDrawer(true); current = p; qty = 1; $('#qv').textContent = 1; $('#pNote').value = '';
+  $('#pCat').textContent = p.category; $('#pName').textContent = p.name; $('#pDesc').textContent = p.description || '';
+  $('#pPrice').outerHTML = `<span class="price${p.price ? '' : ' ask'}" id="pPrice">${p.price ? money(p.price) : 'Price on request'}</span>`;
+  $('#pFeats').innerHTML = (p.features || []).map(f => `<li>${esc(f)}</li>`).join('');
+  $('#pFav').setAttribute('aria-pressed', favs.includes(p.slug));
+  $('#pAsk').href = waLink(`Hi Goldberg Beds, I'd like to know more about the ${p.name}.`);
+  track.innerHTML = p.images.map((src, i) => `<figure><img src="${esc(src)}" alt="${esc(p.name)}, photo ${i + 1}"></figure>`).join('');
+  $('#thumbs').innerHTML = p.images.length > 1 ? p.images.map((src, i) => `<button data-i="${i}" aria-label="Photo ${i + 1}" aria-current="${i === 0}"><img src="${esc(src)}" alt=""></button>`).join('') : '';
+  $('#gPrev').hidden = $('#gNext').hidden = p.images.length < 2;
+  track.scrollLeft = 0;
+  $('#sheet').classList.add('on'); layer(true);
+  try { history.replaceState(null, '', '#' + p.slug); } catch {}
+  setTimeout(() => $('#pClose').focus(), 50);
+}
+function closeProduct() {
+  if (!$('#sheet').classList.contains('on')) return;
+  $('#sheet').classList.remove('on'); layer(false); current = null;
+  try { history.replaceState(null, '', location.pathname + location.search); } catch {}
+}
+function gal(d) {
+  const n = track.children.length, i = Math.round(track.scrollLeft / track.clientWidth);
+  track.scrollTo({left: ((i + d + n) % n) * track.clientWidth, behavior: 'smooth'});
+}
+track.addEventListener('scroll', () => requestAnimationFrame(() => {
+  const i = Math.round(track.scrollLeft / track.clientWidth);
+  document.querySelectorAll('#thumbs button').forEach((b, j) => b.setAttribute('aria-current', i === j));
+}), {passive: true});
+$('#thumbs').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) track.scrollTo({left: b.dataset.i * track.clientWidth, behavior: 'smooth'}); });
+$('#gPrev').addEventListener('click', () => gal(-1));
+$('#gNext').addEventListener('click', () => gal(1));
+$('#pClose').addEventListener('click', closeProduct);
+$('#qm').addEventListener('click', () => { qty = Math.max(1, qty - 1); $('#qv').textContent = qty; });
+$('#qp').addEventListener('click', () => { qty = Math.min(20, qty + 1); $('#qv').textContent = qty; });
+$('#pAdd').addEventListener('click', () => { if (current) addToCart(current.slug, qty, $('#pNote').value.trim()); });
+$('#pFav').addEventListener('click', () => current && toggleFav(current.slug));
+
+/* ---------- drawer: cart & favourites ---------- */
+let mode = 'cart', placed = null;
+function openDrawer(m) { closeProduct(); mode = m; placed = null; renderDrawer(); $('#drawer').classList.add('on'); layer(true); setTimeout(() => $('#dClose').focus(), 50); }
+function closeDrawer(keepVeil) { if (!$('#drawer').classList.contains('on')) return; $('#drawer').classList.remove('on'); if (!keepVeil) layer(false); }
+$('#openCart').addEventListener('click', () => openDrawer('cart'));
+$('#openFav').addEventListener('click', () => openDrawer('fav'));
+$('#dClose').addEventListener('click', () => closeDrawer());
+
+function lineHTML(p, extra, actions) {
+  return `<div class="line">
+    <img src="${esc(p.images[0])}" alt="${esc(p.name)}" data-open="${esc(p.slug)}">
+    <div><h3>${esc(p.name)}</h3><small>${p.price ? money(p.price) : 'Price on request'}</small>${extra}</div>
+    <div style="text-align:right">${actions}</div></div>`;
+}
+function renderDrawer() {
+  const body = $('#dBody'), foot = $('#dFoot');
+  if (mode === 'fav') {
+    $('#dTitle').textContent = 'Favourites';
+    const list = favs.map(bySlug).filter(Boolean);
+    body.innerHTML = list.length ? list.map(p => lineHTML(p, `<button class="x" data-fav="${esc(p.slug)}">Remove</button>`,
+      `<button class="btn ghost" style="min-height:38px;padding:0 14px;font-size:13.5px" data-add="${esc(p.slug)}">Add to cart</button>`)).join('')
+      : `<p class="note" style="padding:30px 0">Tap the heart on any piece to keep it here.</p>`;
+    foot.innerHTML = list.length ? `<button class="btn wide" id="favAll">Add all to cart</button>` : '';
+    const fa = $('#favAll'); if (fa) fa.onclick = () => { list.forEach(p => addToCart(p.slug)); mode = 'cart'; renderDrawer(); };
+    return;
+  }
+  $('#dTitle').textContent = 'Your cart';
+  if (placed) {
+    body.innerHTML = `<div class="done"><span class="note">Order received</span><span class="ref">${esc(placed.ref)}</span>
+      <p class="note">Send it to us on WhatsApp and we'll confirm price and delivery with you personally.</p>
+      <a class="btn" href="${waLink(placed.text)}">Send order on WhatsApp</a></div>`;
+    foot.innerHTML = ''; return;
+  }
+  const lines = cart.map((l, i) => ({...l, i, p: bySlug(l.slug)})).filter(l => l.p);
+  if (!lines.length) {
+    body.innerHTML = `<p class="note" style="padding:30px 0">Your cart is empty.</p>`;
+    foot.innerHTML = `<button class="btn ghost wide" id="browse">Browse the collection</button>`;
+    $('#browse').onclick = () => { closeDrawer(); document.getElementById('shop').scrollIntoView({behavior: 'smooth'}); };
+    return;
+  }
+  body.innerHTML = lines.map(l => lineHTML(l.p,
+    `${l.note ? `<small>${esc(l.note)}</small>` : ''}<button class="x" data-rm="${l.i}">Remove</button>`,
+    `<div class="qty"><button data-q="${l.i}" data-d="-1" aria-label="Fewer">−</button><span>${l.qty}</span><button data-q="${l.i}" data-d="1" aria-label="More">+</button></div>`)).join('');
+  const total = lines.reduce((a, l) => a + (l.p.price || 0) * l.qty, 0), unpriced = lines.some(l => !l.p.price);
+  foot.innerHTML = `
+    <div class="sum"><span>Subtotal</span><b>${total ? money(total) : '—'}</b></div>
+    ${unpriced ? '<p class="note">Some pieces are priced on request. We\'ll confirm your full quote on WhatsApp.</p>' : '<p class="note">Delivery confirmed with you on WhatsApp.</p>'}
+    <form id="co" style="display:flex;flex-direction:column;gap:10px">
+      <label class="f">Name<input id="cName" required autocomplete="name" maxlength="120"></label>
+      <label class="f">WhatsApp number<input id="cPhone" required type="tel" autocomplete="tel" maxlength="40"></label>
+      <label class="f">Suburb or area<input id="cArea" autocomplete="address-level2" maxlength="120"></label>
+      <label class="f">Anything else?<textarea id="cNotes" rows="2" maxlength="1000"></textarea></label>
+      <button class="btn wide" type="submit">Place order</button>
+    </form>`;
+  const saved = store.get('gb_me', {});
+  ['cName', 'cPhone', 'cArea'].forEach(k => { if (saved[k]) $('#' + k).value = saved[k]; });
+  $('#co').addEventListener('submit', placeOrder);
+}
+$('#dBody').addEventListener('click', e => {
+  const q = e.target.closest('[data-q]');
+  if (q) { const l = cart[q.dataset.q]; l.qty = Math.max(1, Math.min(20, l.qty + +q.dataset.d)); counts(); renderDrawer(); return; }
+  const r = e.target.closest('[data-rm]');
+  if (r) { cart.splice(+r.dataset.rm, 1); counts(); renderDrawer(); }
+});
+async function placeOrder(e) {
+  e.preventDefault();
+  const v = id => $('#' + id).value.trim();
+  const me = {cName: v('cName'), cPhone: v('cPhone'), cArea: v('cArea')}; store.set('gb_me', me);
+  const lines = cart.map(l => ({...l, p: bySlug(l.slug)})).filter(l => l.p);
+  const total = lines.reduce((a, l) => a + (l.p.price || 0) * l.qty, 0);
+  const ref = 'GB-' + Date.now().toString(36).toUpperCase().slice(-6);
+  const items = lines.map(l => ({slug: l.slug, name: l.p.name, qty: l.qty, price: l.p.price || null, note: l.note || ''}));
+  const text = [`Hi Goldberg Beds, I'd like to order (${ref}):`, '',
+    ...items.map(i => `• ${i.qty} × ${i.name}${i.price ? ' — ' + money(i.price) : ''}${i.note ? ` (${i.note})` : ''}`), '',
+    total ? `Subtotal: ${money(total)}${items.some(i => !i.price) ? ' + items on request' : ''}` : 'Please send me a quote.',
+    `Name: ${me.cName}`, `Phone: ${me.cPhone}`, me.cArea ? `Area: ${me.cArea}` : '', v('cNotes') ? `Notes: ${v('cNotes')}` : ''].filter(Boolean).join('\n');
+  const btn = e.submitter || $('#co button'); btn.disabled = true; btn.textContent = 'Placing order…';
+  await saveOrder({ref, customer_name: me.cName, phone: me.cPhone, area: me.cArea, notes: v('cNotes'), items,
+    item_count: items.reduce((a, i) => a + i.qty, 0), total, has_unpriced: items.some(i => !i.price)});
+  placed = {ref, text}; cart = []; counts(); renderDrawer();
+}
+
+/* ---------- boot ---------- */
+(async () => {
+  products = await loadProducts();
+  cart = cart.filter(l => bySlug(l.slug)); favs = favs.filter(bySlug);
+  renderShow(); renderCats(); renderGrid(); counts();
+  $('#waFoot').href = waLink('Hi Goldberg Beds');
+  $('#yr').textContent = new Date().getFullYear();
+  const h = decodeURIComponent(location.hash.slice(1)); if (h && bySlug(h)) openProduct(h);
+  addEventListener('hashchange', () => { const s = location.hash.slice(1); if (s && bySlug(s) && (!current || current.slug !== s)) openProduct(s); });
+  addEventListener('resize', updatePos);
+})();
+}
+</script>
+</body>
+</html>
