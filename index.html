@@ -4,20 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Goldberg Beds</title>
+<link rel="icon" href="img/mark.png">
+<meta name="theme-color" content="#fdf4ed">
 <meta name="description" content="Goldberg Beds — loft beds, bunk beds and kids' beds, made to order. Shop the collection and order on WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* VOICE: a quiet gallery that happens to sell — calm, unhurried, never shouting
-   IDEA: a furniture maker's portfolio book, opened on the shop counter
+   IDEA: the Goldberg Beds card — blush paper, black serif monogram, a gold rule with a diamond
    PICTURE: their own work — tall, slow-moving gallery of the best pieces, then the full collection
-   COLOUR and TYPE: warm white, charcoal ink, champagne hairlines; Cormorant titles, Jost body
+   COLOUR and TYPE: blush cream, deep black, gold hairlines, rose-plum used once; Cinzel wordmark, Cormorant titles, Jost body
    LAYOUT: Takealot's bones (search, heart, cart, category rail, grid, drawer) dressed in silence */
 :root{color-scheme:light dark;
- --bg:light-dark(#fbfaf8,#121110);--bg2:light-dark(#f3f0eb,#1a1917);--card:light-dark(#ffffff,#1d1b19);
- --ink:light-dark(#1d1c1a,#eeeae3);--soft:light-dark(#76706768,#a49d92);--soft:light-dark(#77716a,#a49d92);
- --line:light-dark(#e8e3dc,#2e2b27);--gold:light-dark(#9a7f52,#c8ad7b);--veil:light-dark(rgba(20,18,16,.38),rgba(0,0,0,.6))}
+ --bg:light-dark(#fdf6f0,#110e0e);--bg2:light-dark(#f6ebe3,#1a1515);--card:light-dark(#fffbf8,#1d1818);
+ --ink:light-dark(#141112,#f4e9e1);--soft:light-dark(#7d6f6a,#ab9d96);
+ --line:light-dark(#ecdfd6,#302828);--gold:light-dark(#b08452,#cfa676);--rose:light-dark(#8c2f5f,#d48aae);--veil:light-dark(rgba(24,14,16,.4),rgba(0,0,0,.62))}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:130px}
@@ -32,7 +34,7 @@ img{display:block;max-width:100%}
 .ib{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative;border-radius:50%;transition:background .25s}
 .ib:hover{background:var(--bg2)}
 .ib svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.3}
-.badge{position:absolute;top:5px;right:3px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--ink);color:var(--bg);font:500 10.5px/17px Jost,sans-serif;text-align:center}
+.badge{position:absolute;top:5px;right:3px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--rose);color:var(--bg);font:500 10.5px/17px Jost,sans-serif;text-align:center}
 .badge:empty{display:none}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;font-weight:400;font-size:15px;cursor:pointer;transition:background .3s,color .3s}
 .btn:hover{background:transparent;color:var(--ink)}
@@ -42,7 +44,14 @@ img{display:block;max-width:100%}
 /* header */
 header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding-top:12px;padding-bottom:12px}
-.logo{font:600 25px/1 "Cormorant Garamond",serif;text-decoration:none;white-space:nowrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;white-space:nowrap}
+.logo img{width:40px;height:auto}
+.logo b{display:block;font:600 19px/1 Cinzel,Georgia,serif;letter-spacing:.06em}
+.logo small{display:flex;align-items:center;gap:6px;margin-top:5px;font:500 9.5px/1 Cinzel,Georgia,serif;letter-spacing:.32em;color:var(--gold)}
+.logo small::before,.logo small::after{content:"";height:1px;width:14px;background:var(--gold)}
+.rule{display:flex;align-items:center;gap:10px;color:var(--gold);margin-top:16px}
+.rule::before,.rule::after{content:"";height:1px;width:46px;background:currentColor}
+.rule i{width:5px;height:5px;background:currentColor;transform:rotate(45deg)}
 .search{position:relative;max-width:560px;width:100%;justify-self:center}
 .search input{width:100%;height:44px;border:1px solid var(--line);background:var(--card);padding:0 16px 0 42px;font-size:16px;border-radius:0;outline:none;transition:border-color .25s}
 .search input:focus{border-color:var(--ink)}
@@ -81,7 +90,7 @@ select.sort{height:42px;border:1px solid var(--line);background:var(--card);padd
 .card .ph:hover img{transform:scale(1.03)}
 .fav{position:absolute;top:8px;right:8px;background:color-mix(in srgb,var(--bg) 82%,transparent)}
 .fav:hover{background:var(--bg)}
-.fav[aria-pressed=true] svg{fill:var(--ink)}
+.fav[aria-pressed=true] svg{fill:var(--rose);stroke:var(--rose)}
 .more{position:absolute;left:10px;bottom:10px;font-size:12.5px;padding:3px 9px;background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--ink)}
 .card .meta{padding:14px 2px 0;display:flex;flex-direction:column;gap:4px;flex:1}
 .card .cat{font-size:13px;color:var(--soft)}
@@ -144,10 +153,10 @@ label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--so
 .how{background:var(--bg2);padding:clamp(56px,7vw,96px) 0}
 .how .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,60px)}
 .how h3{font-size:26px;margin-bottom:8px}.how p{color:var(--soft)}
-.how .k{display:block;width:28px;height:1px;background:var(--gold);margin-bottom:18px}
+.how .k{display:block;width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg);margin:0 0 20px 2px}
 footer{border-top:1px solid var(--line);padding:40px 0 30px;font-size:14.5px}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
-footer .logo{font-size:30px}
+footer .logo img{width:84px}footer .logo b{font-size:24px}footer .logo small{font-size:11px}
 footer p{color:var(--soft);margin-top:8px;max-width:360px}
 footer nav{display:flex;flex-direction:column;gap:6px;text-align:right}
 footer a{text-decoration:none;color:var(--soft)}footer a:hover{color:var(--ink)}
@@ -160,6 +169,7 @@ footer .by a{color:var(--gold)}
  .how .wrap{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:720px){
+ .logo img{width:34px}.logo b{font-size:16px}.logo small{font-size:8.5px}
  .toast{bottom:auto;top:16px}
  .bar{grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
  .search{grid-column:1/-1;grid-row:2;max-width:none}
@@ -174,7 +184,7 @@ footer .by a{color:var(--gold)}
 <body>
 <header>
  <div class="wrap bar">
-  <a class="logo" href="#top" id="top">Goldberg Beds</a>
+  <a class="logo" href="#top" id="top" aria-label="Goldberg Beds Furniture"><img src="img/mark.png" alt=""><span><b>GOLDBERG BEDS</b><small>FURNITURE</small></span></a>
   <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Search loft beds, bunks, storage…" aria-label="Search the collection" autocomplete="off"></label>
   <div class="icons">
    <button class="ib" id="openFav" aria-label="Favourites"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg><span class="badge" id="favN"></span></button>
@@ -189,6 +199,7 @@ footer .by a{color:var(--gold)}
   <div class="wrap intro">
    <div>
     <h1 id="rw">Recent work</h1>
+    <div class="rule" aria-hidden="true"><i></i></div>
     <p>Loft beds, bunks and children's beds, built to order. A few of the pieces we're proudest of.</p>
    </div>
    <div class="ctrl"><span id="pos" aria-live="polite"></span>
@@ -220,7 +231,7 @@ footer .by a{color:var(--gold)}
 
 <footer>
  <div class="wrap">
-  <div><span class="logo">Goldberg Beds</span><p>Loft beds, bunk beds and children's beds, built to order.</p></div>
+  <div><span class="logo"><img src="img/mark.png" alt=""><span><b>GOLDBERG BEDS</b><small>FURNITURE</small></span></span><p>Loft beds, bunk beds and children's beds, built to order.</p></div>
   <nav aria-label="Footer"><a id="waFoot" href="#">WhatsApp +27 78 067 9984</a><a href="https://wa.me/c/27780679984">WhatsApp catalogue</a><a href="#shop">The collection</a></nav>
   <div class="by"><span>© <span id="yr">2026</span> Goldberg Beds</span><span>Website by <a href="https://tamany.tech">TAMANY.TECH</a></span></div>
  </div>
