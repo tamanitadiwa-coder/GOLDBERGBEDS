@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Goldberg Beds</title>
 <link rel="icon" href="img/mark.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Goldberg">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="Goldberg Beds Furniture — loft beds, bunk beds, beds and storage, built to order. Order on WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,7 +78,23 @@ svg.i{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.25;str
 .intro{padding-top:18px;padding-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .intro h1{font-size:19px;line-height:1.2}
 .intro .small{white-space:nowrap}
-@media(max-width:480px){.intro .small{display:none}.intro h1{font-size:20px}}
+@media(max-width:480px){.intro .small{display:none}.intro h1{font-size:19px}}
+.intro{align-items:center}
+.hsbtn{flex:none;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;font-size:12px;white-space:nowrap}
+.hsbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.hs{position:fixed;z-index:60;left:10px;right:10px;bottom:calc(10px + var(--safe));background:var(--paper);border-radius:18px;padding:22px 22px 18px;box-shadow:0 20px 60px rgba(0,0,0,.14),0 0 0 1px var(--line);transform:translateY(120%);transition:transform .55s var(--ease);max-width:420px;margin:0 auto}
+.hs.on{transform:none}
+.hs h3{font-size:24px;line-height:1.1;margin-bottom:12px;padding-right:36px}
+.hs ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.hs li{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:center;gap:8px}
+.hs li b{font-weight:400}
+.hs li em{font:italic 400 17px "Cormorant Garamond",serif;color:var(--faint)}
+.hs .sh{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--line);vertical-align:middle;margin:0 2px}
+.hs .sh svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.hs .x{position:absolute;top:8px;right:8px}
+.hs .tip{font-size:11.5px;color:var(--soft);margin-top:12px}
+.hs .arrow{position:absolute;left:50%;bottom:-26px;margin-left:-9px;width:18px;height:18px;color:var(--soft);animation:nudge 1.4s var(--ease) infinite}
+@keyframes nudge{50%{transform:translateY(5px)}}
 /* hero (unused) */
 .hero{padding-top:22px}
 .lede{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:16px}
@@ -317,6 +339,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
  <section class="wrap intro" aria-label="Introduction">
   <h1 class="serif">Beds, bunks and lofts, built to order.</h1>
   <span class="small">Order on WhatsApp</span>
+  <button class="hsbtn bubble press" data-install hidden><svg viewBox="0 0 24 24"><rect x="7" y="3.5" width="10" height="17" rx="2.5"/><path d="M12 8.5v6M9 11.5h6"/></svg>Add to Home Screen</button>
  </section>
 
  <section class="sec" id="recent" aria-labelledby="rwt">
@@ -347,7 +370,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
 <footer class="wrap">
  <img src="img/mark.png" alt="">
  <div class="brand"><b>GOLDBERG BEDS</b><small>FURNITURE</small></div>
- <nav aria-label="Footer"><a id="waFoot" href="#">WhatsApp +27 78 067 9984</a><a href="https://wa.me/c/27780679984">WhatsApp catalogue</a><a href="#shop">Collection</a></nav>
+ <nav aria-label="Footer"><a id="waFoot" href="#">WhatsApp +27 78 067 9984</a><a href="https://wa.me/c/27780679984">WhatsApp catalogue</a><a href="#shop">Collection</a><button data-install hidden style="font-size:12.5px;color:var(--soft)">Add to Home Screen</button></nav>
  <p class="by">© <span id="yr">2026</span> Goldberg Beds · Website by <a href="https://tamany.tech">TAMANY.TECH</a></p>
 </footer>
 
@@ -360,6 +383,17 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
 </nav>
 
 <div class="veil" id="veil"></div>
+
+<div class="hs" id="hs" role="dialog" aria-modal="false" aria-labelledby="hsT">
+ <button class="ib x press" id="hsClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
+ <h3 class="serif" id="hsT">Keep Goldberg on your Home Screen</h3>
+ <ol>
+  <li><em>i</em><span>Tap <span class="sh"><svg viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M6 11v8.5h12V11"/></svg></span> <b>Share</b> in Safari's toolbar</span></li>
+  <li><em>ii</em><span>Choose <b>Add to Home Screen</b></span></li>
+ </ol>
+ <p class="tip">On newer iPhones, Share may sit inside the ••• menu.</p>
+ <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+</div>
 
 <article class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="pName">
  <button class="ib bubble press sx" id="pClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
@@ -653,7 +687,7 @@ let pushed = false;
 function layer(on) { $('#veil').classList.toggle('on', on); document.body.classList.toggle('lock', on || $('#search').classList.contains('on')); }
 $('#veil').addEventListener('click', () => { closeProduct(); closeDrawer(); });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeSearch(); closeProduct(); closeDrawer(); }
+  if (e.key === 'Escape') { closeSearch(); closeProduct(); closeDrawer(); $('#hs').classList.remove('on'); }
   if ($('#sheet').classList.contains('on')) { if (e.key === 'ArrowRight') gal(1); if (e.key === 'ArrowLeft') gal(-1); }
 });
 
@@ -880,6 +914,24 @@ $('#sr').addEventListener('click', e => {
   cat = c.dataset.qcat; renderCats(); renderGrid(); closeSearch();
   $('#shop').scrollIntoView({behavior: calm ? 'auto' : 'smooth'});
 });
+
+/* ---------- add to home screen ---------- */
+let installEvt = null;
+const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+function showInstall() { $$('[data-install]').forEach(b => b.hidden = standalone() || !(installEvt || isIOS)); }
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; showInstall(); });
+addEventListener('appinstalled', () => { installEvt = null; showInstall(); $('#hs').classList.remove('on'); });
+document.addEventListener('click', async e => {
+  if (!e.target.closest('[data-install]')) return;
+  if (installEvt) { installEvt.prompt(); const r = await installEvt.userChoice.catch(() => null); if (r && r.outcome === 'accepted') installEvt = null; showInstall(); return; }
+  $('#hs').classList.add('on');
+});
+$('#hsClose').addEventListener('click', () => $('#hs').classList.remove('on'));
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+showInstall();
 
 /* ---------- boot ---------- */
 (async () => {
