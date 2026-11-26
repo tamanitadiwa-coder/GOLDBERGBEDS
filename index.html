@@ -2,274 +2,362 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Goldberg Beds</title>
 <link rel="icon" href="img/mark.png">
-<meta name="theme-color" content="#fdf4ed">
-<meta name="description" content="Goldberg Beds — loft beds, bunk beds and kids' beds, made to order. Shop the collection and order on WhatsApp.">
+<meta name="theme-color" content="#f8f5f1">
+<meta name="description" content="Goldberg Beds Furniture — loft beds, bunk beds, beds and storage, built to order. Order on WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* VOICE: a quiet gallery that happens to sell — calm, unhurried, never shouting
-   IDEA: the Goldberg Beds card — blush paper, black serif monogram, a gold rule with a diamond
-   PICTURE: their own work — tall, slow-moving gallery of the best pieces, then the full collection
-   COLOUR and TYPE: blush cream, deep black, gold hairlines, rose-plum used once; Cinzel wordmark, Cormorant titles, Jost body
-   LAYOUT: Takealot's bones (search, heart, cart, category rail, grid, drawer) dressed in silence */
+/* VOICE: a quiet boutique — calm, unhurried, a little playful in the details
+   IDEA: the maker's lookbook: photographs set like prints on soft paper, with tiny captions
+   PICTURE: their own furniture — an offset trio up front, a rail of recent work, then the collection
+   COLOUR and TYPE: warm paper, soft ink, one muted rose for hearts; Cinzel wordmark, Cormorant for names that matter, Jost for everything small
+   LAYOUT: iPhone first — centred wordmark, thin category line, two-up grid, bottom bar; desktop breathes into an editorial grid */
 :root{color-scheme:light dark;
- --bg:light-dark(#fdf6f0,#110e0e);--bg2:light-dark(#f6ebe3,#1a1515);--card:light-dark(#fffbf8,#1d1818);
- --ink:light-dark(#141112,#f4e9e1);--soft:light-dark(#7d6f6a,#ab9d96);
- --line:light-dark(#ecdfd6,#302828);--gold:light-dark(#b08452,#cfa676);--rose:light-dark(#8c2f5f,#d48aae);--veil:light-dark(rgba(24,14,16,.4),rgba(0,0,0,.62))}
+ --bg:light-dark(#f8f5f1,#121010);--paper:light-dark(#fdfbf8,#191615);--tint:light-dark(#efe9e2,#1d1a18);
+ --ink:light-dark(#191514,#f1ebe4);--soft:light-dark(#8a8178,#a39a90);--faint:light-dark(#b9b0a6,#6e665e);
+ --line:light-dark(#e8e1d8,#2c2724);--rose:light-dark(#b0707c,#d79aa6);
+ --veil:light-dark(rgba(25,21,20,.28),rgba(0,0,0,.55));
+ --ease:cubic-bezier(.22,.8,.2,1);--nav:62px;--safe:env(safe-area-inset-bottom,0px)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
-*{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:130px}
-body{margin:0;background:var(--bg);color:var(--ink);font:300 16px/1.6 Jost,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box;min-width:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 15px/1.6 Jost,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased;padding-bottom:calc(var(--nav) + var(--safe))}
 body.lock{overflow:hidden}
-a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;margin:0;text-wrap:balance}
-h1{font-size:clamp(38px,5.4vw,58px)}h2{font-size:clamp(30px,3.6vw,42px)}h3{font-size:22px;line-height:1.15}
-p{margin:0}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer}
 img{display:block;max-width:100%}
-.wrap{max-width:1320px;margin:0 auto;padding:0 max(4vw,16px)}
-.ib{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative;border-radius:50%;transition:background .25s}
-.ib:hover{background:var(--bg2)}
-.ib svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.3}
-.badge{position:absolute;top:5px;right:3px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--rose);color:var(--bg);font:500 10.5px/17px Jost,sans-serif;text-align:center}
-.badge:empty{display:none}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;font-weight:400;font-size:15px;cursor:pointer;transition:background .3s,color .3s}
-.btn:hover{background:transparent;color:var(--ink)}
-.btn.ghost{background:transparent;color:var(--ink)}.btn.ghost:hover{background:var(--ink);color:var(--bg)}
-.btn.wide{width:100%}
-:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+h1,h2,h3,p{margin:0;font-weight:inherit}
+.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;letter-spacing:-.005em}
+.small{font-size:12.5px;color:var(--soft)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 max(5vw,18px)}
+:focus-visible{outline:1px solid var(--ink);outline-offset:3px;border-radius:2px}
+svg.i{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.press{transition:transform .18s var(--ease)}.press:active{transform:scale(.94)}
+/* the one "bubble" touch, kept for round controls */
+.bubble{border-radius:999px;background:color-mix(in srgb,var(--paper) 86%,transparent);box-shadow:inset 0 0 0 1px var(--line),inset 0 1px 0 light-dark(rgba(255,255,255,.9),rgba(255,255,255,.06));position:relative}
+.bubble::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:conic-gradient(from 210deg,transparent 0 40%,light-dark(#e7d6f0,#3b3346) 55%,light-dark(#d4ecee,#2c3c3f) 68%,transparent 80%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.75;pointer-events:none}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:14.5px;font-weight:400;letter-spacing:.01em;transition:transform .18s var(--ease),opacity .3s}
+.pill:active{transform:scale(.97)}.pill[disabled]{opacity:.5}
+.pill.wide{width:100%}
+.link{font-size:13.5px;border-bottom:1px solid var(--faint);padding-bottom:1px;transition:border-color .3s}
+.link:hover{border-color:var(--ink)}
+.count{position:absolute;top:6px;right:4px;min-width:15px;height:15px;padding:0 4px;border-radius:8px;background:var(--rose);color:#fff;font:500 9.5px/15px Jost,sans-serif;text-align:center;font-variant-numeric:tabular-nums}
+.count:empty{display:none}
+.count.bump{animation:bump .5s var(--ease)}
+@keyframes bump{40%{transform:scale(1.35)}}
 /* header */
-header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;padding-top:12px;padding-bottom:12px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;white-space:nowrap}
-.logo img{width:40px;height:auto}
-.logo b{display:block;font:600 19px/1 Cinzel,Georgia,serif;letter-spacing:.06em}
-.logo small{display:flex;align-items:center;gap:6px;margin-top:5px;font:500 9.5px/1 Cinzel,Georgia,serif;letter-spacing:.32em;color:var(--gold)}
-.logo small::before,.logo small::after{content:"";height:1px;width:14px;background:var(--gold)}
-.rule{display:flex;align-items:center;gap:10px;color:var(--gold);margin-top:16px}
-.rule::before,.rule::after{content:"";height:1px;width:46px;background:currentColor}
-.rule i{width:5px;height:5px;background:currentColor;transform:rotate(45deg)}
-.search{position:relative;max-width:560px;width:100%;justify-self:center}
-.search input{width:100%;height:44px;border:1px solid var(--line);background:var(--card);padding:0 16px 0 42px;font-size:16px;border-radius:0;outline:none;transition:border-color .25s}
-.search input:focus{border-color:var(--ink)}
-.search svg{position:absolute;left:14px;top:13px;width:17px;height:17px;fill:none;stroke:var(--soft);stroke-width:1.4}
-.icons{display:flex;gap:2px}
-.cats{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px)}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:58px}
+.brand{display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1}
+.brand b{font:600 13.5px/1 Cinzel,Georgia,serif;letter-spacing:.3em;padding-left:.3em}
+.brand small{font:500 7.5px/1 Cinzel,Georgia,serif;letter-spacing:.5em;padding-left:.5em;color:var(--soft)}
+.hnav{display:flex;gap:26px;font-size:13px;color:var(--soft)}
+.hnav a:hover{color:var(--ink)}
+.hico{display:flex;justify-content:flex-end;gap:2px}
+.ib{position:relative;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%}
+/* categories */
+.cats{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;height:42px;align-items:center;border-bottom:1px solid var(--line)}
 .cats::-webkit-scrollbar{display:none}
-.chip{flex:none;min-height:36px;padding:0 16px;border:1px solid transparent;background:none;cursor:pointer;font-size:14.5px;color:var(--soft);transition:color .25s,border-color .25s}
-.chip:hover{color:var(--ink)}
-.chip[aria-pressed=true]{color:var(--ink);border-color:var(--ink)}
-/* showcase */
-.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-top:clamp(36px,5vw,64px);padding-bottom:26px}
-.intro p{color:var(--soft);max-width:440px;margin-top:14px}
-.ctrl{display:flex;align-items:center;gap:6px;color:var(--soft);font-size:14px}
-.ctrl .ib{border:1px solid var(--line)}
-.show{display:flex;gap:clamp(12px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(4vw,16px) 8px;scroll-padding:0 max(4vw,16px)}
-.show::-webkit-scrollbar{display:none}
-.slide{flex:0 0 clamp(270px,30vw,420px);scroll-snap-align:start;cursor:pointer;border:0;padding:0;background:none;text-align:left}
-.slide .ph{aspect-ratio:4/5;overflow:hidden;background:var(--bg2)}
-.slide img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.6,.2,1),opacity .8s;opacity:0}
-.slide img.in{opacity:1}
-.slide:hover img{transform:scale(1.035)}
-.slide .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 2px 0}
-.slide .cap span{color:var(--soft);font-size:13.5px;white-space:nowrap}
-.slide h3{font-size:23px}
+.cat{flex:none;height:42px;font-size:13px;color:var(--soft);position:relative;transition:color .3s}
+.cat::after{content:"";position:absolute;left:50%;bottom:7px;width:3px;height:3px;border-radius:50%;background:var(--ink);transform:translateX(-50%) scale(0);transition:transform .35s var(--ease)}
+.cat[aria-pressed=true]{color:var(--ink)}.cat[aria-pressed=true]::after{transform:translateX(-50%) scale(1)}
+/* hero */
+.hero{padding-top:22px}
+.lede{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:16px}
+.lede .link{white-space:nowrap;margin-bottom:3px}
+.lede h1{font-size:23px;line-height:1.15}
+.trio{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:start}
+.trio a{display:block}
+.trio .p{background:var(--tint);overflow:hidden}
+.trio .p img{width:100%;height:100%;object-fit:cover}
+.trio a:nth-child(1){grid-column:1/-1}.trio a:nth-child(1) .p{aspect-ratio:4/5}
+.trio a:nth-child(2){grid-column:1/4}.trio a:nth-child(2) .p{aspect-ratio:1}
+.trio a:nth-child(3){grid-column:4/7;margin-top:46px}.trio a:nth-child(3) .p{aspect-ratio:4/5}
+.cap{display:flex;justify-content:space-between;gap:10px;padding-top:8px;font-size:12.5px}
+.cap span:last-child{color:var(--soft)}
+/* recent rail */
+.sec{padding-top:56px}
+.sech{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.sech h2{font-size:21px}
+.rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(5vw,18px);scroll-padding:0 max(5vw,18px)}
+.rail::-webkit-scrollbar{display:none}
+.rail a{flex:0 0 64vw;max-width:300px;scroll-snap-align:start}
+.rail .p{aspect-ratio:3/4;background:var(--tint);overflow:hidden}
+.rail img{width:100%;height:100%;object-fit:cover}
+.rctl{display:none;gap:4px}
 /* shop */
-.shop{padding-top:clamp(56px,7vw,100px);padding-bottom:clamp(56px,7vw,100px)}
-.shophead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:28px}
-.shophead p{color:var(--soft);font-size:14.5px;margin-top:8px}
-select.sort{height:42px;border:1px solid var(--line);background:var(--card);padding:0 12px;font-size:15px;border-radius:0}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,30px) clamp(12px,1.6vw,24px)}
-.card{display:flex;flex-direction:column}
-.card .ph{position:relative;aspect-ratio:4/5;background:var(--bg2);overflow:hidden;cursor:pointer}
-.card .ph img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s,transform 1.4s cubic-bezier(.2,.6,.2,1)}
-.card .ph img.in{opacity:1}
-.card .ph:hover img{transform:scale(1.03)}
-.fav{position:absolute;top:8px;right:8px;background:color-mix(in srgb,var(--bg) 82%,transparent)}
-.fav:hover{background:var(--bg)}
-.fav[aria-pressed=true] svg{fill:var(--rose);stroke:var(--rose)}
-.more{position:absolute;left:10px;bottom:10px;font-size:12.5px;padding:3px 9px;background:color-mix(in srgb,var(--bg) 85%,transparent);color:var(--ink)}
-.card .meta{padding:14px 2px 0;display:flex;flex-direction:column;gap:4px;flex:1}
-.card .cat{font-size:13px;color:var(--soft)}
-.card h3{font-size:21px;cursor:pointer}
-.price{font-size:15.5px;font-weight:400;white-space:nowrap}
-.price.ask{color:var(--soft);font-weight:300}
-.card .add{margin-top:12px;min-height:42px;font-size:14.5px}
-.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--soft)}
-/* overlay, sheet, drawer */
-.veil{position:fixed;inset:0;background:var(--veil);opacity:0;pointer-events:none;transition:opacity .45s;z-index:40}
+.shopbar{position:sticky;top:58px;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.meta{display:flex;justify-content:space-between;align-items:center;padding:16px 0 18px}
+.sort{appearance:none;-webkit-appearance:none;border:0;background:none;font-size:12.5px;color:var(--soft);padding:10px 0 10px 12px;text-align:right;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 10px}
+.card{position:relative}
+.card .p{position:relative;display:block;aspect-ratio:4/5;background:var(--tint);overflow:hidden}
+.card .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s var(--ease),transform 1.4s var(--ease)}
+.card .p img.alt{opacity:0}
+.fade{opacity:0}.fade.in{opacity:1}
+.card.wide{grid-column:1/-1}.card.wide .p{aspect-ratio:5/4}
+.heart{position:absolute;top:2px;right:2px;width:44px;height:44px;display:grid;place-items:center;color:var(--ink)}
+.heart svg{width:18px;height:18px;transition:fill .3s,stroke .3s}
+.heart[aria-pressed=true] svg,.saveb[aria-pressed=true] svg{fill:var(--rose);stroke:var(--rose)}
+.heart.pop svg,.saveb.pop svg{animation:pop .45s var(--ease)}
+@keyframes pop{45%{transform:scale(1.3)}}
+.ci{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;padding-top:9px}
+.ci h3{font-size:13px;font-weight:400;line-height:1.35}
+.ci .pr{display:block;font-size:12px;color:var(--soft);margin-top:2px;font-variant-numeric:tabular-nums}
+.plus{flex:none;width:44px;height:44px;margin:-6px -6px 0 0;display:grid;place-items:center}
+.plus i{width:30px;height:30px;display:grid;place-items:center;transition:background .35s var(--ease),color .35s}
+.plus svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;transition:transform .35s var(--ease)}
+.plus .ck{display:none}
+.plus.done i{background:var(--ink);color:var(--bg)}
+.plus.done .pl{display:none}.plus.done .ck{display:block;animation:pop .45s var(--ease)}
+.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--soft);font-size:14px}
+/* steps */
+.steps{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;padding:64px 0 10px}
+.steps div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px}
+.steps em{font:italic 400 17px/1.3 "Cormorant Garamond",serif;color:var(--faint)}
+.steps p{font-size:13.5px;color:var(--soft)}.steps b{font-weight:400;color:var(--ink)}
+footer{padding:56px 0 34px;text-align:center}
+footer img{width:46px;margin:0 auto 12px;border-radius:50%}
+footer .brand{margin-bottom:18px}
+footer nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:12.5px;color:var(--soft);margin-bottom:22px}
+footer nav a:hover{color:var(--ink)}
+footer .by{font-size:11.5px;color:var(--faint)}footer .by a{color:var(--soft)}
+/* bottom nav (mobile) */
+.bnav{position:fixed;z-index:35;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--safe));padding-bottom:var(--safe);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.bnav button,.bnav a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10.5px;color:var(--soft);transition:color .3s}
+.bnav svg.i{width:20px;height:20px}
+.bnav [aria-current=true]{color:var(--ink)}
+.bnav .count{top:7px;right:calc(50% - 19px)}
+/* layers */
+.veil{position:fixed;inset:0;z-index:40;background:var(--veil);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
 .veil.on{opacity:1;pointer-events:auto}
-.sheet{position:fixed;z-index:50;inset:4vh 4vw;max-width:1180px;margin:0 auto;background:var(--bg);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .45s,transform .45s;overflow:hidden}
-.sheet.on{opacity:1;transform:none;pointer-events:auto}
-.gal{position:relative;background:var(--bg2);display:flex;flex-direction:column;min-height:0}
-.track{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;min-height:0}
-.track::-webkit-scrollbar{display:none}
-.track figure{flex:0 0 100%;margin:0;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,28px)}
-.track img{max-height:100%;max-width:100%;object-fit:contain}
-.thumbs{display:flex;gap:8px;padding:10px clamp(10px,2vw,28px) 16px;overflow-x:auto}
-.thumbs button{flex:none;width:58px;height:58px;padding:0;border:1px solid transparent;background:none;cursor:pointer;opacity:.55;transition:opacity .3s}
-.thumbs button[aria-current=true]{opacity:1;border-color:var(--ink)}
-.thumbs img{width:100%;height:100%;object-fit:cover}
-.gal .nav{position:absolute;top:50%;transform:translateY(-50%);background:color-mix(in srgb,var(--bg) 80%,transparent)}
-.gal .prev{left:12px}.gal .next{right:12px}
-.info{padding:clamp(24px,3.4vw,52px);overflow-y:auto;display:flex;flex-direction:column;gap:16px}
-.info .cat{color:var(--soft);font-size:14px}
-.info .price{font-size:19px}
-.info .desc{color:var(--soft)}
-.feats{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
-.feats li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
-.feats li::before{content:"";display:inline-block;width:14px;height:1px;background:var(--gold);vertical-align:middle;margin-right:12px}
-label.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--soft)}
-.f input,.f textarea{border:1px solid var(--line);background:var(--card);padding:11px 13px;font-size:16px;color:var(--ink);border-radius:0;outline:none;resize:vertical}
-.f input:focus,.f textarea:focus{border-color:var(--ink)}
-.row{display:flex;gap:10px;align-items:stretch}
-.qty{display:inline-flex;align-items:center;border:1px solid var(--line)}
-.qty button{width:40px;height:44px;border:0;background:none;cursor:pointer;font-size:18px}
-.qty span{min-width:26px;text-align:center;font-size:15px}
-.close{position:absolute;top:10px;right:10px;z-index:2;background:color-mix(in srgb,var(--bg) 85%,transparent)}
-.asklink{font-size:14.5px;text-decoration:none;border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:2px}
-.drawer{position:fixed;z-index:50;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;transform:translateX(102%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.drawer{position:fixed;z-index:50;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .6s var(--ease);padding-bottom:var(--safe)}
 .drawer.on{transform:none}
-.dh{position:sticky;top:0;z-index:1;background:var(--bg);display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
-.db{flex:1 0 auto;padding:8px 22px 22px}
-.df{border-top:1px solid var(--line);padding:18px 22px 22px;display:flex;flex-direction:column;gap:12px}
-.line{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
-.line img{width:72px;height:88px;object-fit:cover;background:var(--bg2);cursor:pointer}
-.line h3{font-size:19px}
-.line small{display:block;color:var(--soft);font-size:13px;margin-top:3px}
-.line .x{font-size:13px;color:var(--soft);background:none;border:0;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
-.line .qty button{width:34px;height:36px}
-.sum{display:flex;justify-content:space-between;font-size:16px}
-.sum b{font-weight:400}
-.note{color:var(--soft);font-size:13.5px}
-.done{text-align:center;padding:40px 6px;display:flex;flex-direction:column;gap:14px;align-items:center}
-.done .ref{font:500 26px "Cormorant Garamond",serif}
-.toast{position:fixed;z-index:60;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:12px 20px;font-size:14.5px;opacity:0;transition:opacity .4s,transform .4s;pointer-events:none;max-width:calc(100% - 32px)}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-/* bands */
-.how{background:var(--bg2);padding:clamp(56px,7vw,96px) 0}
-.how .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,60px)}
-.how h3{font-size:26px;margin-bottom:8px}.how p{color:var(--soft)}
-.how .k{display:block;width:7px;height:7px;border:1px solid var(--gold);transform:rotate(45deg);margin:0 0 20px 2px}
-footer{border-top:1px solid var(--line);padding:40px 0 30px;font-size:14.5px}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
-footer .logo img{width:84px}footer .logo b{font-size:24px}footer .logo small{font-size:11px}
-footer p{color:var(--soft);margin-top:8px;max-width:360px}
-footer nav{display:flex;flex-direction:column;gap:6px;text-align:right}
-footer a{text-decoration:none;color:var(--soft)}footer a:hover{color:var(--ink)}
-footer .by{width:100%;border-top:1px solid var(--line);padding-top:18px;margin-top:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--soft);font-size:13px}
-footer .by a{color:var(--gold)}
-@media(max-width:1060px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:860px){
- .sheet{inset:0;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,56vh) minmax(0,1fr);overflow:hidden}
- .info{gap:14px}
- .how .wrap{grid-template-columns:minmax(0,1fr)}
+.dh{display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 10px 0 22px;flex:none}
+.dh h2{font-size:22px}
+.db{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 22px}
+.df{flex:none;padding:16px 22px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line)}
+.line{display:grid;grid-template-columns:68px minmax(0,1fr) auto;gap:14px;padding:16px 0;align-items:start;animation:rise .5s var(--ease) both}
+.line+.line{border-top:1px solid var(--line)}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}}
+.line img{width:68px;height:85px;object-fit:cover;background:var(--tint);cursor:pointer}
+.line h3{font-size:13.5px;font-weight:400;line-height:1.35}
+.line small{display:block;font-size:12px;color:var(--soft);margin-top:2px}
+.line .rm{font-size:11.5px;color:var(--soft);margin-top:8px;padding:6px 0;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--faint)}
+.lr{display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-size:12.5px;font-variant-numeric:tabular-nums}
+.qty{display:inline-flex;align-items:center;height:34px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+.qty button{width:34px;height:34px;display:grid;place-items:center;font-size:15px;color:var(--soft)}
+.qty button:active{color:var(--ink)}
+.qty span{min-width:18px;text-align:center;font-size:13px;font-variant-numeric:tabular-nums}
+.sum{display:flex;justify-content:space-between;font-size:14px}
+.note{font-size:12px;color:var(--soft);line-height:1.5}
+.blank{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:70px 10px}
+.blank svg{width:92px;height:auto;color:var(--faint);margin-bottom:8px}
+.blank h3{font-size:24px}
+.blank p{font-size:13px;color:var(--soft);max-width:240px}
+.back{font-size:12.5px;color:var(--soft);padding:12px 0;display:inline-flex;gap:6px;align-items:center}
+form.co{display:flex;flex-direction:column;gap:14px;padding:6px 0 20px}
+.f{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--soft)}
+.f input,.f textarea{border:0;border-bottom:1px solid var(--line);background:none;padding:8px 0 10px;font-size:16px;color:var(--ink);border-radius:0;outline:none;resize:none;transition:border-color .3s}
+.f input:focus,.f textarea:focus{border-color:var(--ink)}
+.done{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:60px 6px}
+.done .ref{font:400 30px "Cormorant Garamond",serif;letter-spacing:.02em}
+.done .tick{width:54px;height:54px;display:grid;place-items:center;margin-bottom:8px}
+.done .tick svg{width:22px;height:22px;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .8s .15s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+/* product sheet */
+.sheet{position:fixed;z-index:50;inset:0;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;transform:translateY(100%);transition:transform .65s var(--ease);padding-bottom:calc(84px + var(--safe))}
+.sheet.on{transform:none}
+.sx{position:fixed;z-index:3;top:10px;left:10px}
+.gal{position:relative;background:var(--tint)}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:4/5}
+.track::-webkit-scrollbar{display:none}
+.track figure{flex:0 0 100%;margin:0;scroll-snap-align:start}
+.track img{width:100%;height:100%;object-fit:cover}
+.prog{position:absolute;left:18px;right:18px;bottom:14px;display:flex;gap:4px}
+.prog i{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.45);overflow:hidden}
+.prog i::after{content:"";display:block;height:100%;width:0;background:#fff;transition:width .5s var(--ease)}
+.prog i.on::after{width:100%}
+.gnav{display:none}
+.info{padding:22px max(5vw,18px) 10px;display:flex;flex-direction:column;gap:14px;max-width:520px}
+.info .k{font-size:12px;color:var(--soft)}
+.info h2{font-size:30px;line-height:1.05}
+.info .pr{font-size:14px;font-variant-numeric:tabular-nums}
+.info .d{font-size:14px;color:var(--soft)}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;height:48px;font-size:13.5px;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:17px;color:var(--soft);transition:transform .35s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details ul{margin:0 0 14px;padding:0;list-style:none;font-size:13.5px;color:var(--soft)}
+details li{padding:3px 0}
+details li::before{content:"·";margin-right:10px;color:var(--faint)}
+details textarea{width:100%;border:0;border-bottom:1px solid var(--line);background:none;font-size:16px;padding:6px 0 10px;margin-bottom:14px;outline:none;resize:none;color:var(--ink)}
+.ask{font-size:12.5px;color:var(--soft);align-self:flex-start;border-bottom:1px solid var(--faint)}
+.act{position:fixed;z-index:3;left:0;right:0;bottom:0;padding:12px max(5vw,18px) calc(12px + var(--safe));display:flex;gap:10px;align-items:center;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.act .pill{flex:1}
+.saveb{width:48px;height:48px;display:grid;place-items:center;flex:none}
+.saveb svg{width:19px;height:19px}
+/* search */
+.search{position:fixed;z-index:50;inset:0;background:var(--bg);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .4s var(--ease),transform .5s var(--ease);display:flex;flex-direction:column}
+.search.on{opacity:1;pointer-events:auto;transform:none}
+.sh{display:flex;align-items:center;gap:8px;height:64px;padding:0 10px 0 max(5vw,18px);border-bottom:1px solid var(--line);flex:none}
+.sh input{flex:1;border:0;background:none;font-size:17px;outline:none;height:100%}
+.sr{flex:1;overflow-y:auto;padding:18px max(5vw,18px) 40px}
+.sr .grid{gap:22px 10px}
+.qs{display:flex;flex-wrap:wrap;gap:8px}
+.qs button{height:36px;padding:0 16px;font-size:13px}
+/* fly dot */
+.fly{position:fixed;z-index:70;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--ink);pointer-events:none;transition:transform .65s cubic-bezier(.5,-.3,.5,1),opacity .65s}
+@media(hover:hover){
+ .card .p:hover img.alt{opacity:1}.card .p:hover img{transform:scale(1.025)}
+ .trio a:hover img,.rail a:hover img{transform:scale(1.025)}
+ .trio img,.rail img{transition:transform 1.4s var(--ease)}
+ .plus:hover i{background:var(--ink);color:var(--bg)}
 }
-@media(max-width:720px){
- .logo img{width:34px}.logo b{font-size:16px}.logo small{font-size:8.5px}
- .toast{bottom:auto;top:16px}
- .bar{grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
- .search{grid-column:1/-1;grid-row:2;max-width:none}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .card h3{font-size:18px}.card .add{font-size:13.5px;padding:0 10px}
- .slide{flex-basis:78vw}
- footer nav{text-align:left}
+@media(min-width:760px){
+ body{padding-bottom:0;font-size:15.5px}
+ .bnav{display:none}
+ .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 18px}
+ .card.wide{grid-column:span 2}.card.wide .p{aspect-ratio:auto;height:calc(100% - 52px)}
+ .trio{grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+ .trio a:nth-child(1){grid-column:4/9;grid-row:1/3}
+ .trio a:nth-child(2){grid-column:10/13;grid-row:1;margin-top:120px}
+ .trio a:nth-child(3){grid-column:1/4;grid-row:2;margin-top:-80px}
+ .hero{padding-top:44px;position:relative}
+ .lede{position:absolute;left:max(5vw,18px);top:44px;flex-direction:column;align-items:flex-start;gap:16px;width:calc((100% - 2*max(5vw,18px)) * .25 - 18px);z-index:1}
+ .lede h1{font-size:26px;max-width:none}
+ .rail a{flex-basis:23vw;max-width:340px}
+ .rctl{display:flex}
+ .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+ .drawer{box-shadow:-30px 0 60px rgba(0,0,0,.05)}
+ .sheet{inset:3vh 3vw;max-width:1200px;margin:0 auto;padding-bottom:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);overflow:hidden;transform:translateY(24px);opacity:0;pointer-events:none;transition:transform .6s var(--ease),opacity .45s var(--ease)}
+ .sheet.on{opacity:1;pointer-events:auto}
+ .sx{position:absolute;left:auto;right:12px;top:12px}
+ .gal{height:100%}.track{height:100%;aspect-ratio:auto}
+ .gnav{display:grid;position:absolute;top:50%;margin-top:-22px}.gprev{left:12px}.gnext{right:12px}
+ .side{overflow-y:auto;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+ .info{padding:0 clamp(28px,4vw,64px);max-width:none}
+ .info h2{font-size:36px}
+ .act{position:static;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;padding:6px clamp(28px,4vw,64px) 0}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media(min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:759px){.hnav,.hico{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<header>
+
+<header class="top" id="top">
  <div class="wrap bar">
-  <a class="logo" href="#top" id="top" aria-label="Goldberg Beds Furniture"><img src="img/mark.png" alt=""><span><b>GOLDBERG BEDS</b><small>FURNITURE</small></span></a>
-  <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" type="search" placeholder="Search loft beds, bunks, storage…" aria-label="Search the collection" autocomplete="off"></label>
-  <div class="icons">
-   <button class="ib" id="openFav" aria-label="Favourites"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg><span class="badge" id="favN"></span></button>
-   <button class="ib" id="openCart" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="badge" id="cartN"></span></button>
+  <nav class="hnav" aria-label="Main"><a href="#shop">Shop</a><a href="#recent">Recent work</a></nav>
+  <a class="brand" href="#top" aria-label="Goldberg Beds Furniture, home"><b>GOLDBERG BEDS</b><small>FURNITURE</small></a>
+  <div class="hico">
+   <button class="ib press" data-open-search aria-label="Search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
+   <button class="ib press" data-open-saved aria-label="Saved"><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg><span class="count" data-count="fav"></span></button>
+   <button class="ib press" data-open-basket data-basket aria-label="Basket"><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg><span class="count" data-count="cart"></span></button>
   </div>
  </div>
- <nav class="wrap cats" id="cats" aria-label="Categories"></nav>
 </header>
 
 <main>
- <section aria-labelledby="rw">
-  <div class="wrap intro">
-   <div>
-    <h1 id="rw">Recent work</h1>
-    <div class="rule" aria-hidden="true"><i></i></div>
-    <p>Loft beds, bunks and children's beds, built to order. A few of the pieces we're proudest of.</p>
-   </div>
-   <div class="ctrl"><span id="pos" aria-live="polite"></span>
-    <button class="ib" id="sPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button>
-    <button class="ib" id="sNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button>
-   </div>
+ <section class="wrap hero" aria-label="Introduction">
+  <div class="lede">
+   <h1 class="serif">Beds, bunks and lofts, built to order.</h1>
+   <a class="link" href="#shop">Shop the collection</a>
   </div>
-  <div class="show" id="show" tabindex="0" aria-label="Recent work gallery"></div>
+  <div class="trio" id="trio"></div>
  </section>
 
- <section class="wrap shop" id="shop" aria-labelledby="ct">
-  <div class="shophead">
-   <div><h2 id="ct">The collection</h2><p id="count"></p></div>
-   <select class="sort" id="sort" aria-label="Sort">
-    <option value="feat">Featured</option><option value="az">Name, A to Z</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option>
-   </select>
+ <section class="sec" id="recent" aria-labelledby="rwt">
+  <div class="wrap sech"><h2 class="serif" id="rwt">Recent work</h2>
+   <div class="rctl"><button class="ib bubble press" id="rPrev" aria-label="Previous"><svg class="i" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg></button><button class="ib bubble press" id="rNext" aria-label="Next"><svg class="i" viewBox="0 0 24 24"><path d="m10 7 5 5-5 5"/></svg></button></div>
   </div>
-  <div class="grid" id="grid"></div>
+  <div class="rail" id="rail"></div>
  </section>
 
- <section class="how" aria-label="How ordering works">
+ <section class="sec" id="shop" aria-label="The collection">
+  <div class="shopbar"><nav class="wrap cats" id="cats" aria-label="Categories"></nav></div>
   <div class="wrap">
-   <div><span class="k"></span><h3>Choose</h3><p>Save favourites as you browse and add the pieces you love to your cart.</p></div>
-   <div><span class="k"></span><h3>Tell us</h3><p>Note any size, colour or change you'd like. Every piece is built to order.</p></div>
-   <div><span class="k"></span><h3>Confirm</h3><p>Send your order and we'll confirm price and delivery with you on WhatsApp.</p></div>
+   <div class="meta"><span class="small" id="count"></span>
+    <select class="sort" id="sort" aria-label="Sort">
+     <option value="feat">Sort: Featured</option><option value="az">Sort: A to Z</option><option value="lo">Sort: Price, low</option><option value="hi">Sort: Price, high</option>
+    </select>
+   </div>
+   <div class="grid" id="grid"></div>
+   <div class="steps">
+    <div><em>i</em><p><b>Choose.</b> Add pieces to your basket and note any size or colour.</p></div>
+    <div><em>ii</em><p><b>Send.</b> Your order comes to us on WhatsApp with a reference.</p></div>
+    <div><em>iii</em><p><b>Confirm.</b> We reply with your quote and delivery date.</p></div>
+   </div>
   </div>
  </section>
 </main>
 
-<footer>
- <div class="wrap">
-  <div><span class="logo"><img src="img/mark.png" alt=""><span><b>GOLDBERG BEDS</b><small>FURNITURE</small></span></span><p>Loft beds, bunk beds and children's beds, built to order.</p></div>
-  <nav aria-label="Footer"><a id="waFoot" href="#">WhatsApp +27 78 067 9984</a><a href="https://wa.me/c/27780679984">WhatsApp catalogue</a><a href="#shop">The collection</a></nav>
-  <div class="by"><span>© <span id="yr">2026</span> Goldberg Beds</span><span>Website by <a href="https://tamany.tech">TAMANY.TECH</a></span></div>
- </div>
+<footer class="wrap">
+ <img src="img/mark.png" alt="">
+ <div class="brand"><b>GOLDBERG BEDS</b><small>FURNITURE</small></div>
+ <nav aria-label="Footer"><a id="waFoot" href="#">WhatsApp +27 78 067 9984</a><a href="https://wa.me/c/27780679984">WhatsApp catalogue</a><a href="#shop">Collection</a></nav>
+ <p class="by">© <span id="yr">2026</span> Goldberg Beds · Website by <a href="https://tamany.tech">TAMANY.TECH</a></p>
 </footer>
+
+<nav class="bnav" aria-label="Shortcuts">
+ <a href="#shop" id="bnShop" aria-current="true"><svg class="i" viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="6" height="6" rx="1"/><rect x="13.5" y="4.5" width="6" height="6" rx="1"/><rect x="4.5" y="13.5" width="6" height="6" rx="1"/><rect x="13.5" y="13.5" width="6" height="6" rx="1"/></svg>Shop</a>
+ <button data-open-search><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>Search</button>
+ <button data-open-saved><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg>Saved<span class="count" data-count="fav"></span></button>
+ <button data-open-basket data-basket><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg>Basket<span class="count" data-count="cart"></span></button>
+</nav>
 
 <div class="veil" id="veil"></div>
 
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="pName">
- <button class="ib close" id="pClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<article class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="pName">
+ <button class="ib bubble press sx" id="pClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
  <div class="gal">
   <div class="track" id="track"></div>
-  <button class="ib nav prev" id="gPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg></button>
-  <button class="ib nav next" id="gNext" aria-label="Next photo"><svg viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></svg></button>
-  <div class="thumbs" id="thumbs"></div>
+  <div class="prog" id="prog"></div>
+  <button class="ib bubble press gnav gprev" id="gPrev" aria-label="Previous photo"><svg class="i" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg></button>
+  <button class="ib bubble press gnav gnext" id="gNext" aria-label="Next photo"><svg class="i" viewBox="0 0 24 24"><path d="m10 7 5 5-5 5"/></svg></button>
  </div>
- <div class="info">
-  <span class="cat" id="pCat"></span>
-  <h2 id="pName"></h2>
-  <span class="price" id="pPrice"></span>
-  <p class="desc" id="pDesc"></p>
-  <ul class="feats" id="pFeats"></ul>
-  <label class="f">Size, colour or changes (optional)<textarea id="pNote" rows="2" maxlength="300" placeholder="e.g. single over double, white"></textarea></label>
-  <div class="row">
-   <div class="qty"><button id="qm" aria-label="Fewer">−</button><span id="qv">1</span><button id="qp" aria-label="More">+</button></div>
-   <button class="btn" id="pAdd" style="flex:1">Add to cart</button>
-   <button class="ib fav" id="pFav" style="position:static;border:1px solid var(--line);width:46px;height:46px;border-radius:0" aria-label="Save to favourites"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg></button>
+ <div class="side">
+  <div class="info">
+   <span class="k" id="pCat"></span>
+   <h2 class="serif" id="pName"></h2>
+   <span class="pr" id="pPrice"></span>
+   <p class="d" id="pDesc"></p>
+   <div>
+    <details id="pDet"><summary>Details</summary><ul id="pFeats"></ul></details>
+    <details id="pNoteBox"><summary>Add a note — size, colour or changes</summary><textarea id="pNote" rows="2" maxlength="300" placeholder="e.g. single over double, in white" aria-label="Note for this piece"></textarea></details>
+   </div>
+   <a class="ask" id="pAsk" href="#">Ask about this piece on WhatsApp</a>
   </div>
-  <a class="asklink" id="pAsk" href="#">Ask about this piece on WhatsApp</a>
+  <div class="act">
+   <div class="qty"><button id="qm" aria-label="Fewer">−</button><span id="qv">1</span><button id="qp" aria-label="More">+</button></div>
+   <button class="pill press" id="pAdd">Add to basket</button>
+   <button class="saveb bubble press" id="pFav" aria-label="Save"><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg></button>
+  </div>
  </div>
-</div>
+</article>
 
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
- <div class="dh"><h2 id="dTitle" style="font-size:28px"></h2><button class="ib" id="dClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+ <div class="dh"><h2 class="serif" id="dTitle">Basket</h2><button class="ib press" id="dClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div>
  <div class="db" id="dBody"></div>
  <div class="df" id="dFoot"></div>
 </aside>
 
-<div class="toast" id="toast" role="status"></div>
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="Search">
+ <div class="sh"><svg class="i" viewBox="0 0 24 24" style="color:var(--soft)"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+  <input id="q" type="search" placeholder="Search beds, bunks, wardrobes" autocomplete="off" aria-label="Search the collection">
+  <button class="ib press" id="sClose" aria-label="Close search"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div>
+ <div class="sr" id="sr"></div>
+</div>
 
 <script src="products.js"></script>
 <script>
@@ -282,26 +370,32 @@ const CONFIG = {
 
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = n => 'R ' + Number(n).toLocaleString('en-ZA', {maximumFractionDigits: 0});
-const priceHTML = p => p.price ? `<span class="price">${money(p.price)}</span>` : `<span class="price ask">Price on request</span>`;
+const priceText = p => p.price ? money(p.price) : 'Price on request';
 const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} }
 };
 const waLink = t => `https://wa.me/${CONFIG.wa}?text=${encodeURIComponent(t)}`;
-const heart = '<svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></svg>';
-const fadeIn = root => root.querySelectorAll('img').forEach(i => { const on = () => i.classList.add('in'); i.complete ? on() : i.addEventListener('load', on, {once: true}); });
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ICON = {
+  heart: '<svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg>',
+  plus: '<svg class="pl" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><svg class="ck" viewBox="0 0 24 24"><path d="m5.5 12.5 4 4 9-9"/></svg>',
+  bed: '<svg viewBox="0 0 120 70" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18v44M106 40v22M14 50h92M14 40h92"/><path d="M22 40v-8a5 5 0 0 1 5-5h18a5 5 0 0 1 5 5v8"/><path d="M58 40c0-6 6-8 16-8s22 2 32 8"/><path d="M84 14c3-3 7-3 9 0M90 8c2-2 5-2 6 0" opacity=".6"/></svg>'
+};
+const fadeIn = root => root.querySelectorAll('img.fade').forEach(i => { const on = () => i.classList.add('in'); i.complete && i.naturalWidth ? on() : i.addEventListener('load', on, {once: true}); });
 
 /* ---------- state ---------- */
 let products = [];
 let cart = store.get('gb_cart', []);   // [{slug, qty, note}]
 let favs = store.get('gb_fav', []);    // [slug]
-let cat = 'All', query = '', sortBy = 'feat';
+let cat = 'All', sortBy = 'feat';
 let current = null, qty = 1;
 const bySlug = s => products.find(p => p.slug === s);
 
-/* ---------- data layer (PocketBase or local) ---------- */
+/* ---------- data layer (PocketBase or local) — unchanged ---------- */
 async function loadProducts() {
   if (CONFIG.pb) {
     try {
@@ -325,64 +419,41 @@ async function saveOrder(order) {
   } catch { return false; }
 }
 
-/* ---------- toast ---------- */
-let tt;
-function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2400); }
-
 /* ---------- counts ---------- */
-function counts() {
+function counts(bump) {
   const n = cart.reduce((a, l) => a + l.qty, 0);
-  $('#cartN').textContent = n || ''; $('#favN').textContent = favs.length || '';
+  $$('[data-count=cart]').forEach(e => { e.textContent = n || ''; if (bump === 'cart') { e.classList.remove('bump'); void e.offsetWidth; e.classList.add('bump'); } });
+  $$('[data-count=fav]').forEach(e => { e.textContent = favs.length || ''; });
   store.set('gb_cart', cart); store.set('gb_fav', favs);
 }
 
-/* ---------- showcase ---------- */
-function renderShow() {
+/* ---------- hero trio + recent rail ---------- */
+function renderTop() {
   const f = products.filter(p => p.featured);
-  $('#show').innerHTML = f.map(p => `
-    <button class="slide" data-open="${esc(p.slug)}" aria-label="${esc(p.name)}">
-      <div class="ph"><img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></div>
-      <div class="cap"><h3>${esc(p.name)}</h3><span>${esc(p.category)}</span></div>
-    </button>`).join('');
-  fadeIn($('#show')); updatePos();
+  const tile = p => `<a href="#${esc(p.slug)}" data-open="${esc(p.slug)}"><div class="p"><img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}"></div><div class="cap"><span>${esc(p.name)}</span><span>${esc(p.category)}</span></div></a>`;
+  $('#trio').innerHTML = f.slice(0, 3).map(tile).join('');
+  $('#rail').innerHTML = f.slice(3).map(p => `<a href="#${esc(p.slug)}" data-open="${esc(p.slug)}"><div class="p"><img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></div><div class="cap"><span>${esc(p.name)}</span></div></a>`).join('');
+  fadeIn($('#trio')); fadeIn($('#rail'));
 }
-const show = $('#show');
-const slideW = () => { const s = show.querySelector('.slide'); return s ? s.getBoundingClientRect().width + parseFloat(getComputedStyle(show).columnGap || 16) : 300; };
-function updatePos() {
-  const n = show.children.length; if (!n) return;
-  const i = Math.min(n, Math.round(show.scrollLeft / slideW()) + 1);
-  $('#pos').textContent = `${i} of ${n}`;
-}
-function step(d) {
-  const max = show.scrollWidth - show.clientWidth - 4;
-  if (d > 0 && show.scrollLeft >= max) show.scrollTo({left: 0, behavior: 'smooth'});
-  else show.scrollBy({left: d * slideW(), behavior: 'smooth'});
-}
-$('#sPrev').addEventListener('click', () => step(-1));
-$('#sNext').addEventListener('click', () => step(1));
-show.addEventListener('scroll', () => requestAnimationFrame(updatePos), {passive: true});
-show.addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
-let paused = false, auto;
-['pointerenter', 'touchstart', 'focusin'].forEach(ev => show.addEventListener(ev, () => paused = true, {passive: true}));
-['pointerleave', 'focusout'].forEach(ev => show.addEventListener(ev, () => paused = false));
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) auto = setInterval(() => { if (!paused && !document.hidden && !$('#veil').classList.contains('on')) step(1); }, 6500);
+const rail = $('#rail');
+const railStep = d => { const a = rail.querySelector('a'); if (a) rail.scrollBy({left: d * (a.getBoundingClientRect().width + 10), behavior: 'smooth'}); };
+$('#rPrev').addEventListener('click', () => railStep(-1));
+$('#rNext').addEventListener('click', () => railStep(1));
 
 /* ---------- categories ---------- */
 function renderCats() {
   const list = ['All', ...new Set(products.map(p => p.category))];
-  $('#cats').innerHTML = list.map(c => `<button class="chip" data-cat="${esc(c)}" aria-pressed="${c === cat}">${esc(c)}</button>`).join('');
+  $('#cats').innerHTML = list.map(c => `<button class="cat" data-cat="${esc(c)}" aria-pressed="${c === cat}">${esc(c)}</button>`).join('');
 }
 $('#cats').addEventListener('click', e => {
   const b = e.target.closest('[data-cat]'); if (!b) return;
   cat = b.dataset.cat; renderCats(); renderGrid();
-  document.getElementById('shop').scrollIntoView({behavior: 'smooth'});
+  const y = $('#shop').getBoundingClientRect().top + scrollY - 58;
+  if (scrollY > y) scrollTo({top: y, behavior: calm ? 'auto' : 'smooth'});
 });
 
 /* ---------- grid ---------- */
-function filtered() {
-  const q = query.trim().toLowerCase();
-  let list = products.filter(p => (cat === 'All' || p.category === cat) &&
-    (!q || [p.name, p.category, p.description, ...(p.features || [])].join(' ').toLowerCase().includes(q)));
+function sorted(list) {
   const priced = (a, b, dir) => (a.price == null) - (b.price == null) || dir * ((a.price || 0) - (b.price || 0));
   if (sortBy === 'az') list.sort((a, b) => a.name.localeCompare(b.name));
   else if (sortBy === 'lo') list.sort((a, b) => priced(a, b, 1));
@@ -390,82 +461,105 @@ function filtered() {
   else list.sort((a, b) => (b.featured - a.featured) || (a.sort - b.sort));
   return list;
 }
+const cardHTML = (p, wide) => `
+  <article class="card${wide ? ' wide' : ''}">
+    <a class="p" href="#${esc(p.slug)}" data-open="${esc(p.slug)}" aria-label="${esc(p.name)}">
+      <img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy">
+      ${p.images[1] ? `<img class="alt" src="${esc(p.images[1])}" alt="" loading="lazy">` : ''}
+    </a>
+    <button class="heart press" data-fav="${esc(p.slug)}" aria-pressed="${favs.includes(p.slug)}" aria-label="Save ${esc(p.name)}">${ICON.heart}</button>
+    <div class="ci">
+      <div><h3>${esc(p.name)}</h3><span class="pr">${priceText(p)}</span></div>
+      <button class="plus press" data-add="${esc(p.slug)}" aria-label="Add ${esc(p.name)} to basket"><i class="bubble">${ICON.plus}</i></button>
+    </div>
+  </article>`;
 function renderGrid() {
-  const list = filtered();
-  $('#count').textContent = `${list.length} ${list.length === 1 ? 'piece' : 'pieces'}${cat !== 'All' ? ' in ' + cat : ''}${query ? ` matching “${query.trim()}”` : ''}`;
-  $('#grid').innerHTML = list.length ? list.map(p => `
-    <article class="card">
-      <div class="ph" data-open="${esc(p.slug)}">
-        <img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy">
-        <button class="ib fav" data-fav="${esc(p.slug)}" aria-pressed="${favs.includes(p.slug)}" aria-label="Save ${esc(p.name)}">${heart}</button>
-        ${p.images.length > 1 ? `<span class="more">${p.images.length} photos</span>` : ''}
-      </div>
-      <div class="meta">
-        <span class="cat">${esc(p.category)}</span>
-        <h3 data-open="${esc(p.slug)}">${esc(p.name)}</h3>
-        ${priceHTML(p)}
-        <button class="btn ghost add" data-add="${esc(p.slug)}">Add to cart</button>
-      </div>
-    </article>`).join('') : `<p class="empty">Nothing matches that yet. Try another word, or <a href="${waLink('Hi Goldberg Beds, I am looking for something specific:')}">ask us on WhatsApp</a>.</p>`;
+  const list = sorted(products.filter(p => cat === 'All' || p.category === cat));
+  $('#count').textContent = `${list.length} ${list.length === 1 ? 'piece' : 'pieces'}`;
+  $('#grid').innerHTML = list.length ? list.map((p, i) => cardHTML(p, cat === 'All' && sortBy === 'feat' && i % 9 === 4)).join('') : `<p class="empty">Nothing here yet.</p>`;
   fadeIn($('#grid'));
 }
-let qt;
-$('#q').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { query = e.target.value; renderGrid(); }, 160); });
-$('#q').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('shop').scrollIntoView({behavior: 'smooth'}); });
 $('#sort').addEventListener('change', e => { sortBy = e.target.value; renderGrid(); });
 
-/* ---------- cart & favourites actions ---------- */
-function addToCart(slug, n = 1, note = '') {
+/* ---------- add / save ---------- */
+function visibleBasket() { return [...$$('[data-basket]')].find(b => b.offsetParent && getComputedStyle(b.closest('.hico, .bnav')).visibility !== 'hidden'); }
+function fly(from) {
+  const to = visibleBasket(); if (calm || !from || !to) return;
+  const a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
+  const d = document.createElement('i'); d.className = 'fly';
+  d.style.left = a.left + a.width / 2 + 'px'; d.style.top = a.top + a.height / 2 + 'px';
+  document.body.append(d);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    d.style.transform = `translate(${b.left + b.width / 2 - a.left - a.width / 2}px,${b.top + b.height / 2 - a.top - a.height / 2}px) scale(.5)`;
+    d.style.opacity = '.3';
+  }));
+  setTimeout(() => d.remove(), 700);
+}
+function addToCart(slug, n = 1, note = '', from) {
   const l = cart.find(x => x.slug === slug && (x.note || '') === note);
   l ? l.qty += n : cart.push({slug, qty: n, note});
-  counts(); toast(`${bySlug(slug).name} added to cart`);
-  if ($('#drawer').classList.contains('on') && mode === 'cart') renderDrawer();
+  fly(from);
+  setTimeout(() => counts('cart'), calm ? 0 : 600);
+  if ($('#drawer').classList.contains('on') && mode === 'basket') renderDrawer();
 }
-function toggleFav(slug) {
+function confirmBtn(btn, label) {
+  if (!btn) return;
+  btn.classList.add('done');
+  if (label) { const t = btn.textContent; btn.textContent = label; setTimeout(() => { btn.textContent = t; }, 1400); }
+  setTimeout(() => btn.classList.remove('done'), 1400);
+}
+function toggleFav(slug, btn) {
   const i = favs.indexOf(slug);
   i > -1 ? favs.splice(i, 1) : favs.push(slug);
   counts();
-  document.querySelectorAll(`[data-fav="${CSS.escape(slug)}"]`).forEach(b => b.setAttribute('aria-pressed', favs.includes(slug)));
+  $$(`[data-fav="${CSS.escape(slug)}"]`).forEach(b => b.setAttribute('aria-pressed', favs.includes(slug)));
   if (current && current.slug === slug) $('#pFav').setAttribute('aria-pressed', favs.includes(slug));
-  toast(i > -1 ? 'Removed from favourites' : 'Saved to favourites');
-  if ($('#drawer').classList.contains('on') && mode === 'fav') renderDrawer();
+  if (btn && i === -1) { btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop'); }
+  if ($('#drawer').classList.contains('on') && mode === 'saved') renderDrawer();
 }
 document.addEventListener('click', e => {
-  const f = e.target.closest('[data-fav]'); if (f) { e.stopPropagation(); toggleFav(f.dataset.fav); return; }
-  const a = e.target.closest('[data-add]'); if (a) { addToCart(a.dataset.add); return; }
-  const o = e.target.closest('[data-open]'); if (o) openProduct(o.dataset.open);
+  const f = e.target.closest('[data-fav]'); if (f) { e.preventDefault(); toggleFav(f.dataset.fav, f); return; }
+  const a = e.target.closest('[data-add]'); if (a) { e.preventDefault(); addToCart(a.dataset.add, 1, '', a); confirmBtn(a); return; }
+  const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); closeSearch(true); openProduct(o.dataset.open, true); return; }
+  if (e.target.closest('[data-open-basket]')) { openDrawer('basket'); return; }
+  if (e.target.closest('[data-open-saved]')) { openDrawer('saved'); return; }
+  if (e.target.closest('[data-open-search]')) { openSearch(); return; }
 });
 
-/* ---------- veil / layers ---------- */
-function layer(on) { $('#veil').classList.toggle('on', on); document.body.classList.toggle('lock', on); }
+/* ---------- layers ---------- */
+let pushed = false;
+function layer(on) { $('#veil').classList.toggle('on', on); document.body.classList.toggle('lock', on || $('#search').classList.contains('on')); }
 $('#veil').addEventListener('click', () => { closeProduct(); closeDrawer(); });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeProduct(); closeDrawer(); }
+  if (e.key === 'Escape') { closeSearch(); closeProduct(); closeDrawer(); }
   if ($('#sheet').classList.contains('on')) { if (e.key === 'ArrowRight') gal(1); if (e.key === 'ArrowLeft') gal(-1); }
 });
 
-/* ---------- product sheet ---------- */
+/* ---------- product ---------- */
 const track = $('#track');
-function openProduct(slug) {
+function openProduct(slug, push) {
   const p = bySlug(slug); if (!p) return;
   closeDrawer(true); current = p; qty = 1; $('#qv').textContent = 1; $('#pNote').value = '';
   $('#pCat').textContent = p.category; $('#pName').textContent = p.name; $('#pDesc').textContent = p.description || '';
-  $('#pPrice').outerHTML = `<span class="price${p.price ? '' : ' ask'}" id="pPrice">${p.price ? money(p.price) : 'Price on request'}</span>`;
+  $('#pPrice').textContent = priceText(p);
   $('#pFeats').innerHTML = (p.features || []).map(f => `<li>${esc(f)}</li>`).join('');
+  $('#pDet').hidden = !(p.features || []).length; $('#pDet').open = false; $('#pNoteBox').open = false;
   $('#pFav').setAttribute('aria-pressed', favs.includes(p.slug));
   $('#pAsk').href = waLink(`Hi Goldberg Beds, I'd like to know more about the ${p.name}.`);
-  track.innerHTML = p.images.map((src, i) => `<figure><img src="${esc(src)}" alt="${esc(p.name)}, photo ${i + 1}"></figure>`).join('');
-  $('#thumbs').innerHTML = p.images.length > 1 ? p.images.map((src, i) => `<button data-i="${i}" aria-label="Photo ${i + 1}" aria-current="${i === 0}"><img src="${esc(src)}" alt=""></button>`).join('') : '';
+  track.innerHTML = p.images.map((src, i) => `<figure><img src="${esc(src)}" alt="${esc(p.name)}, photo ${i + 1}"${i ? ' loading="lazy"' : ''}></figure>`).join('');
+  $('#prog').innerHTML = p.images.length > 1 ? p.images.map((_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('') : '';
   $('#gPrev').hidden = $('#gNext').hidden = p.images.length < 2;
-  track.scrollLeft = 0;
+  track.scrollLeft = 0; $('#sheet').scrollTop = 0;
   $('#sheet').classList.add('on'); layer(true);
-  try { history.replaceState(null, '', '#' + p.slug); } catch {}
-  setTimeout(() => $('#pClose').focus(), 50);
+  if (push && location.hash.slice(1) !== p.slug) { pushed = true; location.hash = p.slug; }
+  setTimeout(() => $('#pClose').focus({preventScroll: true}), 80);
 }
-function closeProduct() {
+function closeProduct(fromHash) {
   if (!$('#sheet').classList.contains('on')) return;
   $('#sheet').classList.remove('on'); layer(false); current = null;
-  try { history.replaceState(null, '', location.pathname + location.search); } catch {}
+  if (fromHash) return;
+  if (pushed) { pushed = false; history.back(); }
+  else { try { history.replaceState(null, '', location.pathname + location.search); } catch {} }
 }
 function gal(d) {
   const n = track.children.length, i = Math.round(track.scrollLeft / track.clientWidth);
@@ -473,76 +567,76 @@ function gal(d) {
 }
 track.addEventListener('scroll', () => requestAnimationFrame(() => {
   const i = Math.round(track.scrollLeft / track.clientWidth);
-  document.querySelectorAll('#thumbs button').forEach((b, j) => b.setAttribute('aria-current', i === j));
+  $$('#prog i').forEach((b, j) => b.classList.toggle('on', j <= i));
 }), {passive: true});
-$('#thumbs').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) track.scrollTo({left: b.dataset.i * track.clientWidth, behavior: 'smooth'}); });
 $('#gPrev').addEventListener('click', () => gal(-1));
 $('#gNext').addEventListener('click', () => gal(1));
-$('#pClose').addEventListener('click', closeProduct);
+$('#pClose').addEventListener('click', () => closeProduct());
 $('#qm').addEventListener('click', () => { qty = Math.max(1, qty - 1); $('#qv').textContent = qty; });
 $('#qp').addEventListener('click', () => { qty = Math.min(20, qty + 1); $('#qv').textContent = qty; });
-$('#pAdd').addEventListener('click', () => { if (current) addToCart(current.slug, qty, $('#pNote').value.trim()); });
-$('#pFav').addEventListener('click', () => current && toggleFav(current.slug));
+$('#pAdd').addEventListener('click', e => { if (!current) return; addToCart(current.slug, qty, $('#pNote').value.trim(), e.currentTarget); confirmBtn(e.currentTarget, 'Added'); });
+$('#pFav').addEventListener('click', e => current && toggleFav(current.slug, e.currentTarget));
 
-/* ---------- drawer: cart & favourites ---------- */
-let mode = 'cart', placed = null;
-function openDrawer(m) { closeProduct(); mode = m; placed = null; renderDrawer(); $('#drawer').classList.add('on'); layer(true); setTimeout(() => $('#dClose').focus(), 50); }
+/* ---------- drawer: basket & saved ---------- */
+let mode = 'basket', step = 'list', placed = null;
+function openDrawer(m) { closeSearch(true); closeProduct(); mode = m; step = 'list'; placed = null; renderDrawer(); $('#drawer').classList.add('on'); layer(true); setTimeout(() => $('#dClose').focus({preventScroll: true}), 80); }
 function closeDrawer(keepVeil) { if (!$('#drawer').classList.contains('on')) return; $('#drawer').classList.remove('on'); if (!keepVeil) layer(false); }
-$('#openCart').addEventListener('click', () => openDrawer('cart'));
-$('#openFav').addEventListener('click', () => openDrawer('fav'));
 $('#dClose').addEventListener('click', () => closeDrawer());
 
-function lineHTML(p, extra, actions) {
-  return `<div class="line">
-    <img src="${esc(p.images[0])}" alt="${esc(p.name)}" data-open="${esc(p.slug)}">
-    <div><h3>${esc(p.name)}</h3><small>${p.price ? money(p.price) : 'Price on request'}</small>${extra}</div>
-    <div style="text-align:right">${actions}</div></div>`;
+function blank(title, text, cta) {
+  return `<div class="blank">${ICON.bed}<h3 class="serif">${title}</h3><p>${text}</p><button class="link" data-browse>${cta}</button></div>`;
 }
 function renderDrawer() {
   const body = $('#dBody'), foot = $('#dFoot');
-  if (mode === 'fav') {
-    $('#dTitle').textContent = 'Favourites';
+  if (mode === 'saved') {
+    $('#dTitle').textContent = 'Saved';
     const list = favs.map(bySlug).filter(Boolean);
-    body.innerHTML = list.length ? list.map(p => lineHTML(p, `<button class="x" data-fav="${esc(p.slug)}">Remove</button>`,
-      `<button class="btn ghost" style="min-height:38px;padding:0 14px;font-size:13.5px" data-add="${esc(p.slug)}">Add to cart</button>`)).join('')
-      : `<p class="note" style="padding:30px 0">Tap the heart on any piece to keep it here.</p>`;
-    foot.innerHTML = list.length ? `<button class="btn wide" id="favAll">Add all to cart</button>` : '';
-    const fa = $('#favAll'); if (fa) fa.onclick = () => { list.forEach(p => addToCart(p.slug)); mode = 'cart'; renderDrawer(); };
-    return;
+    body.innerHTML = list.length ? list.map(p => `<div class="line">
+        <img src="${esc(p.images[0])}" alt="${esc(p.name)}" data-open="${esc(p.slug)}">
+        <div><h3>${esc(p.name)}</h3><small>${priceText(p)}</small><button class="rm" data-fav="${esc(p.slug)}">Remove</button></div>
+        <div class="lr"><button class="plus press" data-add="${esc(p.slug)}" aria-label="Add ${esc(p.name)} to basket"><i class="bubble">${ICON.plus}</i></button></div></div>`).join('')
+      : blank('Nothing saved yet', 'Tap the heart on any piece to keep it here.', 'Browse the collection');
+    foot.innerHTML = ''; foot.hidden = true; return;
   }
-  $('#dTitle').textContent = 'Your cart';
+  $('#dTitle').textContent = 'Basket';
+  foot.hidden = false;
   if (placed) {
-    body.innerHTML = `<div class="done"><span class="note">Order received</span><span class="ref">${esc(placed.ref)}</span>
-      <p class="note">Send it to us on WhatsApp and we'll confirm price and delivery with you personally.</p>
-      <a class="btn" href="${waLink(placed.text)}">Send order on WhatsApp</a></div>`;
-    foot.innerHTML = ''; return;
+    body.innerHTML = `<div class="done"><span class="tick bubble"><svg class="i" viewBox="0 0 24 24"><path d="m5.5 12.5 4 4 9-9"/></svg></span>
+      <span class="small">Order received</span><span class="ref">${esc(placed.ref)}</span>
+      <p class="note" style="max-width:260px">Send it to us on WhatsApp and we'll come back to you with your quote and delivery.</p></div>`;
+    foot.innerHTML = `<a class="pill wide" href="${waLink(placed.text)}">Send on WhatsApp</a>`;
+    return;
   }
   const lines = cart.map((l, i) => ({...l, i, p: bySlug(l.slug)})).filter(l => l.p);
-  if (!lines.length) {
-    body.innerHTML = `<p class="note" style="padding:30px 0">Your cart is empty.</p>`;
-    foot.innerHTML = `<button class="btn ghost wide" id="browse">Browse the collection</button>`;
-    $('#browse').onclick = () => { closeDrawer(); document.getElementById('shop').scrollIntoView({behavior: 'smooth'}); };
+  if (!lines.length) { body.innerHTML = blank('Your basket is resting', 'When something catches your eye, it will wait for you here.', 'Browse the collection'); foot.innerHTML = ''; foot.hidden = true; return; }
+  const total = lines.reduce((a, l) => a + (l.p.price || 0) * l.qty, 0), unpriced = lines.some(l => !l.p.price);
+  if (step === 'details') {
+    const me = store.get('gb_me', {});
+    body.innerHTML = `<button class="back" data-step="list"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="m14 7-5 5 5 5"/></svg>Basket</button>
+      <form class="co" id="co">
+        <label class="f">Name<input id="cName" required autocomplete="name" maxlength="120" value="${esc(me.cName || '')}"></label>
+        <label class="f">WhatsApp number<input id="cPhone" required type="tel" autocomplete="tel" maxlength="40" value="${esc(me.cPhone || '')}"></label>
+        <label class="f">Suburb or area<input id="cArea" autocomplete="address-level2" maxlength="120" value="${esc(me.cArea || '')}"></label>
+        <label class="f">Anything else<textarea id="cNotes" rows="2" maxlength="1000"></textarea></label>
+      </form>`;
+    foot.innerHTML = `<div class="sum"><span>${lines.reduce((a, l) => a + l.qty, 0)} items</span><span>${total ? money(total) : 'Quote on WhatsApp'}</span></div>
+      <button class="pill wide" type="submit" form="co" id="placeBtn">Place order</button>`;
+    $('#co').addEventListener('submit', placeOrder);
     return;
   }
-  body.innerHTML = lines.map(l => lineHTML(l.p,
-    `${l.note ? `<small>${esc(l.note)}</small>` : ''}<button class="x" data-rm="${l.i}">Remove</button>`,
-    `<div class="qty"><button data-q="${l.i}" data-d="-1" aria-label="Fewer">−</button><span>${l.qty}</span><button data-q="${l.i}" data-d="1" aria-label="More">+</button></div>`)).join('');
-  const total = lines.reduce((a, l) => a + (l.p.price || 0) * l.qty, 0), unpriced = lines.some(l => !l.p.price);
-  foot.innerHTML = `
-    <div class="sum"><span>Subtotal</span><b>${total ? money(total) : '—'}</b></div>
-    ${unpriced ? '<p class="note">Some pieces are priced on request. We\'ll confirm your full quote on WhatsApp.</p>' : '<p class="note">Delivery confirmed with you on WhatsApp.</p>'}
-    <form id="co" style="display:flex;flex-direction:column;gap:10px">
-      <label class="f">Name<input id="cName" required autocomplete="name" maxlength="120"></label>
-      <label class="f">WhatsApp number<input id="cPhone" required type="tel" autocomplete="tel" maxlength="40"></label>
-      <label class="f">Suburb or area<input id="cArea" autocomplete="address-level2" maxlength="120"></label>
-      <label class="f">Anything else?<textarea id="cNotes" rows="2" maxlength="1000"></textarea></label>
-      <button class="btn wide" type="submit">Place order</button>
-    </form>`;
-  const saved = store.get('gb_me', {});
-  ['cName', 'cPhone', 'cArea'].forEach(k => { if (saved[k]) $('#' + k).value = saved[k]; });
-  $('#co').addEventListener('submit', placeOrder);
+  body.innerHTML = lines.map(l => `<div class="line">
+      <img src="${esc(l.p.images[0])}" alt="${esc(l.p.name)}" data-open="${esc(l.p.slug)}">
+      <div><h3>${esc(l.p.name)}</h3>${l.note ? `<small>${esc(l.note)}</small>` : ''}<button class="rm" data-rm="${l.i}">Remove</button></div>
+      <div class="lr"><span>${l.p.price ? money(l.p.price * l.qty) : 'On request'}</span>
+        <div class="qty"><button data-q="${l.i}" data-d="-1" aria-label="Fewer">−</button><span>${l.qty}</span><button data-q="${l.i}" data-d="1" aria-label="More">+</button></div></div>
+    </div>`).join('');
+  foot.innerHTML = `<div class="sum"><span>Subtotal</span><span>${total ? money(total) : '—'}</span></div>
+    <p class="note">${unpriced ? 'Some pieces are priced on request. We confirm your full quote and delivery on WhatsApp.' : 'Delivery is confirmed with you on WhatsApp.'}</p>
+    <button class="pill wide" data-step="details">Checkout</button>`;
 }
-$('#dBody').addEventListener('click', e => {
+$('#drawer').addEventListener('click', e => {
+  const s = e.target.closest('[data-step]'); if (s) { step = s.dataset.step; renderDrawer(); $('#dBody').scrollTop = 0; return; }
+  if (e.target.closest('[data-browse]')) { closeDrawer(); $('#shop').scrollIntoView({behavior: calm ? 'auto' : 'smooth'}); return; }
   const q = e.target.closest('[data-q]');
   if (q) { const l = cart[q.dataset.q]; l.qty = Math.max(1, Math.min(20, l.qty + +q.dataset.d)); counts(); renderDrawer(); return; }
   const r = e.target.closest('[data-rm]');
@@ -560,22 +654,56 @@ async function placeOrder(e) {
     ...items.map(i => `• ${i.qty} × ${i.name}${i.price ? ' — ' + money(i.price) : ''}${i.note ? ` (${i.note})` : ''}`), '',
     total ? `Subtotal: ${money(total)}${items.some(i => !i.price) ? ' + items on request' : ''}` : 'Please send me a quote.',
     `Name: ${me.cName}`, `Phone: ${me.cPhone}`, me.cArea ? `Area: ${me.cArea}` : '', v('cNotes') ? `Notes: ${v('cNotes')}` : ''].filter(Boolean).join('\n');
-  const btn = e.submitter || $('#co button'); btn.disabled = true; btn.textContent = 'Placing order…';
+  const btn = $('#placeBtn'); btn.disabled = true; btn.textContent = 'Placing order…';
   await saveOrder({ref, customer_name: me.cName, phone: me.cPhone, area: me.cArea, notes: v('cNotes'), items,
     item_count: items.reduce((a, i) => a + i.qty, 0), total, has_unpriced: items.some(i => !i.price)});
   placed = {ref, text}; cart = []; counts(); renderDrawer();
 }
 
+/* ---------- search ---------- */
+function openSearch() {
+  closeDrawer(); closeProduct();
+  $('#search').classList.add('on'); document.body.classList.add('lock');
+  renderSearch(); setTimeout(() => $('#q').focus(), 60);
+}
+function closeSearch(silent) {
+  if (!$('#search').classList.contains('on')) return;
+  $('#search').classList.remove('on');
+  if (!$('#veil').classList.contains('on')) document.body.classList.remove('lock');
+}
+function renderSearch() {
+  const q = $('#q').value.trim().toLowerCase();
+  if (!q) {
+    $('#sr').innerHTML = `<p class="small" style="margin-bottom:12px">Browse</p><div class="qs">${['All', ...new Set(products.map(p => p.category))].map(c => `<button class="bubble press" data-qcat="${esc(c)}">${esc(c)}</button>`).join('')}</div>`;
+    return;
+  }
+  const list = products.filter(p => [p.name, p.category, p.description, ...(p.features || [])].join(' ').toLowerCase().includes(q));
+  $('#sr').innerHTML = list.length ? `<p class="small" style="margin-bottom:14px">${list.length} ${list.length === 1 ? 'piece' : 'pieces'}</p><div class="grid">${list.map(p => cardHTML(p)).join('')}</div>`
+    : `<p class="empty">Nothing matches “${esc(q)}”. <a class="link" href="${waLink('Hi Goldberg Beds, I am looking for: ' + q)}">Ask us instead</a></p>`;
+  fadeIn($('#sr'));
+}
+let qt;
+$('#q').addEventListener('input', () => { clearTimeout(qt); qt = setTimeout(renderSearch, 140); });
+$('#sClose').addEventListener('click', () => closeSearch());
+$('#sr').addEventListener('click', e => {
+  const c = e.target.closest('[data-qcat]'); if (!c) return;
+  cat = c.dataset.qcat; renderCats(); renderGrid(); closeSearch();
+  $('#shop').scrollIntoView({behavior: calm ? 'auto' : 'smooth'});
+});
+
 /* ---------- boot ---------- */
 (async () => {
   products = await loadProducts();
   cart = cart.filter(l => bySlug(l.slug)); favs = favs.filter(bySlug);
-  renderShow(); renderCats(); renderGrid(); counts();
+  renderTop(); renderCats(); renderGrid(); counts();
   $('#waFoot').href = waLink('Hi Goldberg Beds');
   $('#yr').textContent = new Date().getFullYear();
-  const h = decodeURIComponent(location.hash.slice(1)); if (h && bySlug(h)) openProduct(h);
-  addEventListener('hashchange', () => { const s = location.hash.slice(1); if (s && bySlug(s) && (!current || current.slug !== s)) openProduct(s); });
-  addEventListener('resize', updatePos);
+  const h = decodeURIComponent(location.hash.slice(1)); if (h && bySlug(h)) openProduct(h, false);
+  addEventListener('hashchange', () => {
+    const s = decodeURIComponent(location.hash.slice(1));
+    if (s && bySlug(s)) { if (!current || current.slug !== s) openProduct(s, false); }
+    else if (current) { pushed = false; closeProduct(true); }
+  });
 })();
 }
 </script>
