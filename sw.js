@@ -1,6 +1,6 @@
 // Goldberg Beds — makes the shop installable and quick to reopen.
 // Photos are cached after first view; pages and data always try the network first.
-const V = 'gb-v1';
+const V = 'gb-v2';
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(V).then(c => c.addAll(['./', './index.html', './products.js', './img/mark.png']).catch(() => {}))); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
