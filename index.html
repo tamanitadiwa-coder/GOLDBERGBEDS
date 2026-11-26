@@ -149,7 +149,7 @@ footer nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size
 footer nav a:hover{color:var(--ink)}
 footer .by{font-size:11.5px;color:var(--faint)}footer .by a{color:var(--soft)}
 /* bottom nav (mobile) */
-.bnav{position:fixed;z-index:35;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--safe));padding-bottom:var(--safe);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.bnav{position:fixed;z-index:35;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--safe));padding-bottom:var(--safe);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .bnav button,.bnav a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10.5px;color:var(--soft);transition:color .3s}
 .bnav svg.i{width:20px;height:20px}
 .bnav [aria-current=true]{color:var(--ink)}
@@ -191,6 +191,28 @@ form.co{display:flex;flex-direction:column;gap:14px;padding:6px 0 20px}
 .placed .tick{width:54px;height:54px;display:grid;place-items:center;margin-bottom:8px}
 .placed .tick svg{width:22px;height:22px;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .8s .15s var(--ease) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
+.me{width:6px;height:6px;border-radius:50%;background:var(--rose);position:absolute;top:11px;right:11px;display:none}
+.signed .me{display:block}
+.bnav .me{top:9px;right:calc(50% - 14px)}
+.auth{display:flex;flex-direction:column;gap:14px;padding:6px 0 20px}
+.auth h3{font-size:26px;line-height:1.1}
+.auth .lead{font-size:13px;color:var(--soft);margin-top:-6px}
+.pw{position:relative}.pw input{width:100%;padding-right:54px}
+.pw button{position:absolute;right:0;bottom:6px;height:32px;font-size:11.5px;color:var(--soft)}
+.err{font-size:12.5px;color:var(--rose);min-height:1px}
+.err:empty{display:none}
+.ok{font-size:12.5px;color:var(--soft)}
+.swap{font-size:13px;color:var(--soft);text-align:center;padding-top:4px}
+.swap button{color:var(--ink);border-bottom:1px solid var(--faint);padding-bottom:1px}
+.forgot{align-self:flex-end;font-size:12px;color:var(--soft);margin-top:-6px;padding:4px 0}
+.who{padding:10px 0 22px;border-bottom:1px solid var(--line)}
+.who h3{font-size:28px;line-height:1.1;margin-bottom:6px}
+.who p{font-size:13px;color:var(--soft)}
+.orders{padding:18px 0}
+.orders h4{margin:0 0 6px;font-size:12.5px;font-weight:400;color:var(--soft)}
+.order{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.order small{font-size:12px;color:var(--soft)}
+.order .st{text-transform:capitalize;font-size:12px;color:var(--soft);text-align:right}
 /* product sheet */
 .sheet{position:fixed;z-index:50;inset:0;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;transform:translateY(100%);transition:transform .65s var(--ease);padding-bottom:calc(84px + var(--safe))}
 .sheet.on{transform:none}
@@ -285,6 +307,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
   <div class="hico">
    <button class="ib press" data-open-search aria-label="Search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
    <button class="ib press" data-open-saved aria-label="Saved"><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg><span class="count" data-count="fav"></span></button>
+   <button class="ib press" data-open-account aria-label="Account"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.6"/><path d="M5.5 19.5c.9-3.4 3.4-5.2 6.5-5.2s5.6 1.8 6.5 5.2"/></svg><span class="me"></span></button>
    <button class="ib press" data-open-basket data-basket aria-label="Cart"><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg><span class="count" data-count="cart"></span></button>
   </div>
  </div>
@@ -333,6 +356,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
  <button data-open-search><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>Search</button>
  <button data-open-saved><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg>Saved<span class="count" data-count="fav"></span></button>
  <button data-open-basket data-basket><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg>Cart<span class="count" data-count="cart"></span></button>
+ <button data-open-account><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.6"/><path d="M5.5 19.5c.9-3.4 3.4-5.2 6.5-5.2s5.6 1.8 6.5 5.2"/></svg>Account<span class="me"></span></button>
 </nav>
 
 <div class="veil" id="veil"></div>
@@ -430,12 +454,73 @@ async function loadProducts() {
   return (window.GB_PRODUCTS || []).filter(p => p.active !== false);
 }
 async function saveOrder(order) {
+  if (CONFIG.pb) {
+    if (!session) return false;
+    try { await api('collections/orders/records', {method: 'POST', body: JSON.stringify({...order, status: 'new', user: session.user.id})}); }
+    catch { return false; }
+  }
   const log = store.get('gb_orders', []); log.unshift(order); store.set('gb_orders', log.slice(0, 20));
-  if (!CONFIG.pb) return true;
-  try {
-    const r = await fetch(`${CONFIG.pb}/api/collections/orders/records`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...order, status: 'new'})});
-    return r.ok;
-  } catch { return false; }
+  return true;
+}
+
+/* ---------- customer accounts (PocketBase users) ---------- */
+let session = store.get('gb_auth', null);   // {token, user:{id,name,email,phone}}
+const accounts = () => !!CONFIG.pb;
+async function api(path, opts = {}) {
+  const r = await fetch(`${CONFIG.pb}/api/${path}`, {...opts, headers: {'Content-Type': 'application/json', ...(session ? {Authorization: session.token} : {})}});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw {status: r.status, ...j};
+  return j;
+}
+function setSession(j) {
+  session = {token: j.token, user: {id: j.record.id, name: j.record.name || '', email: j.record.email || '', phone: j.record.phone || ''}};
+  store.set('gb_auth', session); markSigned();
+}
+function markSigned() { document.body.classList.toggle('signed', !!session); }
+function mergeAccount(rec) {
+  for (const l of (rec.cart || [])) {
+    if (!bySlug(l.slug)) continue;
+    const m = cart.find(x => x.slug === l.slug && (x.note || '') === (l.note || ''));
+    m ? m.qty = Math.max(m.qty, l.qty) : cart.push({slug: l.slug, qty: l.qty, note: l.note || ''});
+  }
+  for (const f of (rec.favourites || [])) if (bySlug(f) && !favs.includes(f)) favs.push(f);
+  counts(); syncNow();
+  $$('[data-fav]').forEach(b => b.setAttribute('aria-pressed', favs.includes(b.dataset.fav)));
+}
+let syncT;
+function sync() { if (!session) return; clearTimeout(syncT); syncT = setTimeout(syncNow, 700); }
+async function syncNow() {
+  if (!session) return;
+  try { await api(`collections/users/records/${session.user.id}`, {method: 'PATCH', body: JSON.stringify({cart, favourites: favs})}); }
+  catch (e) { if (e.status === 401 || e.status === 403 || e.status === 404) signOut(); }
+}
+async function signIn(email, password) {
+  const j = await api('collections/users/auth-with-password', {method: 'POST', body: JSON.stringify({identity: email, password})});
+  setSession(j); mergeAccount(j.record);
+}
+async function signUp(name, email, phone, password) {
+  await api('collections/users/records', {method: 'POST', body: JSON.stringify({name, email, phone, password, passwordConfirm: password})});
+  await signIn(email, password);
+}
+async function refreshSession() {
+  if (!session || !accounts()) { if (!accounts()) { session = null; markSigned(); } return; }
+  try { setSession(await api('collections/users/auth-refresh', {method: 'POST'})); mergeAccount((await api(`collections/users/records/${session.user.id}`))); }
+  catch (e) { if (e.status === 401 || e.status === 403 || e.status === 404) signOut(); }
+}
+function signOut() {
+  session = null; store.set('gb_auth', null); cart = []; favs = []; counts(); markSigned();
+  $$('[data-fav]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+}
+function authError(e, mode) {
+  const d = e && e.data || {};
+  if (mode === 'up') {
+    if (d.email && /unique/.test(d.email.code || '')) return 'There is already an account with that email. Sign in instead.';
+    if (d.email) return 'Please check your email address.';
+    if (d.password) return 'Use a password of at least 8 characters.';
+  }
+  if (e && e.status === 400 && mode === 'in') return "That email and password don't match.";
+  if (e && e.status === 429) return 'Too many tries. Please wait a moment.';
+  return 'Something went wrong. Please try again.';
 }
 
 /* ---------- counts ---------- */
@@ -444,6 +529,7 @@ function counts(bump) {
   $$('[data-count=cart]').forEach(e => { e.textContent = n || ''; if (bump === 'cart') { e.classList.remove('bump'); void e.offsetWidth; e.classList.add('bump'); } });
   $$('[data-count=fav]').forEach(e => { e.textContent = favs.length || ''; });
   store.set('gb_cart', cart); store.set('gb_fav', favs);
+  sync();
 }
 
 /* ---------- hero trio + recent rail ---------- */
@@ -558,6 +644,7 @@ document.addEventListener('click', e => {
   const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); closeSearch(true); const t = o.closest('.ctrack'); openProduct(o.dataset.open, true, t ? Math.round(t.scrollLeft / t.clientWidth) : 0); return; }
   if (e.target.closest('[data-open-basket]')) { openDrawer('basket'); return; }
   if (e.target.closest('[data-open-saved]')) { openDrawer('saved'); return; }
+  if (e.target.closest('[data-open-account]')) { openDrawer('account'); return; }
   if (e.target.closest('[data-open-search]')) { openSearch(); return; }
 });
 
@@ -616,16 +703,49 @@ $('#pAdd').addEventListener('click', e => { if (!current) return; addToCart(curr
 $('#pFav').addEventListener('click', e => current && toggleFav(current.slug, e.currentTarget));
 
 /* ---------- drawer: basket & saved ---------- */
-let mode = 'basket', step = 'list', placed = null;
-function openDrawer(m) { closeSearch(true); closeProduct(); mode = m; step = 'list'; placed = null; renderDrawer(); $('#drawer').classList.add('on'); layer(true); setTimeout(() => $('#dClose').focus({preventScroll: true}), 80); }
+let mode = 'basket', step = 'list', placed = null, authMode = 'in', authMsg = '';
+function openDrawer(m) { closeSearch(true); closeProduct(); mode = m; step = 'list'; placed = null; authMsg = ''; renderDrawer(); $('#drawer').classList.add('on'); layer(true); setTimeout(() => $('#dClose').focus({preventScroll: true}), 80); }
 function closeDrawer(keepVeil) { if (!$('#drawer').classList.contains('on')) return; $('#drawer').classList.remove('on'); if (!keepVeil) layer(false); }
 $('#dClose').addEventListener('click', () => closeDrawer());
 
 function blank(title, text, cta) {
   return `<div class="blank">${ICON.bed}<h3 class="serif">${title}</h3><p>${text}</p><button class="link" data-browse>${cta}</button></div>`;
 }
+const EYE = 'Show';
+function authForm(ctx) {
+  const up = authMode === 'up';
+  return `<form class="auth" id="authForm" novalidate>
+    <h3 class="serif">${up ? 'Create your account' : (ctx === 'checkout' ? 'Sign in to check out' : 'Welcome back')}</h3>
+    <p class="lead">${up ? 'Your cart, saved pieces and orders stay with you on any device.' : 'Your cart and saved pieces are kept in your account.'}</p>
+    ${up ? `<label class="f">Name<input id="aName" required autocomplete="name" maxlength="120"></label>
+    <label class="f">WhatsApp number<input id="aPhone" required type="tel" autocomplete="tel" maxlength="40"></label>` : ''}
+    <label class="f">Email<input id="aEmail" required type="email" autocomplete="email" maxlength="200" inputmode="email"></label>
+    <label class="f pw">Password<input id="aPass" required type="password" minlength="8" autocomplete="${up ? 'new-password' : 'current-password'}" maxlength="72"><button type="button" data-pw aria-label="Show password">${EYE}</button></label>
+    ${up ? '' : '<button type="button" class="forgot" data-forgot>Forgot password?</button>'}
+    <p class="err" id="aErr" role="alert">${esc(authMsg)}</p>
+    <button class="pill wide" type="submit" id="aBtn">${up ? 'Create account' : 'Sign in'}</button>
+    <p class="swap">${up ? 'Already have an account? <button type="button" data-auth="in">Sign in</button>' : 'New here? <button type="button" data-auth="up">Create an account</button>'}</p>
+  </form>`;
+}
+async function renderAccount(body, foot) {
+  $('#dTitle').textContent = 'Account'; foot.innerHTML = ''; foot.hidden = true;
+  if (!accounts()) { body.innerHTML = `<div class="blank">${ICON.bed}<h3 class="serif">Accounts open soon</h3><p>Sign-in switches on once the shop's backend is connected. You can still order as normal.</p></div>`; return; }
+  if (!session) { body.innerHTML = authForm('account'); return; }
+  const u = session.user;
+  body.innerHTML = `<div class="who"><h3 class="serif">Hello, ${esc((u.name || '').split(' ')[0] || 'there')}</h3><p>${esc(u.email)}${u.phone ? ' · ' + esc(u.phone) : ''}</p></div>
+    <div class="orders"><h4>Your orders</h4><div id="myOrders"><p class="note" style="padding:14px 0">Loading…</p></div></div>`;
+  foot.hidden = false; foot.innerHTML = `<button class="link" data-signout style="align-self:center">Sign out</button>`;
+  try {
+    const j = await api('collections/orders/records?sort=-created&perPage=30');
+    const box = $('#myOrders'); if (!box) return;
+    box.innerHTML = j.items.length ? j.items.map(o => `<div class="order"><span>${esc(o.ref)}</span><span class="st">${esc(o.status || 'new')}</span>
+      <small>${new Date(o.created.replace(' ', 'T')).toLocaleDateString('en-ZA', {day: 'numeric', month: 'short', year: 'numeric'})} · ${o.item_count || 0} ${o.item_count === 1 ? 'item' : 'items'}</small><small style="text-align:right">${o.total ? money(o.total) : 'Quote'}</small></div>`).join('')
+      : `<p class="note" style="padding:14px 0">No orders yet. When you place one, it will appear here.</p>`;
+  } catch { const box = $('#myOrders'); if (box) box.innerHTML = `<p class="note" style="padding:14px 0">Couldn't load your orders right now.</p>`; }
+}
 function renderDrawer() {
   const body = $('#dBody'), foot = $('#dFoot');
+  if (mode === 'account') { renderAccount(body, foot); return; }
   if (mode === 'saved') {
     $('#dTitle').textContent = 'Saved';
     const list = favs.map(bySlug).filter(Boolean);
@@ -648,8 +768,14 @@ function renderDrawer() {
   const lines = cart.map((l, i) => ({...l, i, p: bySlug(l.slug)})).filter(l => l.p);
   if (!lines.length) { body.innerHTML = blank('Your cart is resting', 'When something catches your eye, it will wait for you here.', 'Browse the collection'); foot.innerHTML = ''; foot.hidden = true; return; }
   const total = lines.reduce((a, l) => a + (l.p.price || 0) * l.qty, 0), unpriced = lines.some(l => !l.p.price);
+  if (step === 'details' && accounts() && !session) step = 'auth';
+  if (step === 'auth') {
+    body.innerHTML = `<button class="back" data-step="list"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="m14 7-5 5 5 5"/></svg>Cart</button>` + authForm('checkout');
+    foot.innerHTML = ''; foot.hidden = true; return;
+  }
   if (step === 'details') {
-    const me = store.get('gb_me', {});
+    const saved = store.get('gb_me', {}), u = session ? session.user : {};
+    const me = {cName: u.name || saved.cName, cPhone: u.phone || saved.cPhone, cArea: saved.cArea};
     body.innerHTML = `<button class="back" data-step="list"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="m14 7-5 5 5 5"/></svg>Cart</button>
       <form class="co" id="co">
         <label class="f">Name<input id="cName" required autocomplete="name" maxlength="120" value="${esc(me.cName || '')}"></label>
@@ -672,13 +798,38 @@ function renderDrawer() {
     <p class="note">${unpriced ? 'Some pieces are priced on request. We confirm your full quote and delivery on WhatsApp.' : 'Delivery is confirmed with you on WhatsApp.'}</p>
     <button class="pill wide" data-step="details">Checkout</button>`;
 }
-$('#drawer').addEventListener('click', e => {
+$('#drawer').addEventListener('click', async e => {
+  const sw = e.target.closest('[data-auth]'); if (sw) { authMode = sw.dataset.auth; authMsg = ''; renderDrawer(); return; }
+  const pw = e.target.closest('[data-pw]'); if (pw) { const i = pw.previousElementSibling, show = i.type === 'password'; i.type = show ? 'text' : 'password'; pw.textContent = show ? 'Hide' : 'Show'; return; }
+  if (e.target.closest('[data-signout]')) { signOut(); renderDrawer(); return; }
+  if (e.target.closest('[data-forgot]')) {
+    const em = $('#aEmail').value.trim(), out = $('#aErr');
+    if (!em) { out.textContent = 'Type your email above, then tap Forgot password.'; return; }
+    try { await api('collections/users/request-password-reset', {method: 'POST', body: JSON.stringify({email: em})}); } catch {}
+    out.className = 'ok'; out.textContent = 'If that email has an account, a reset link is on its way.'; return;
+  }
   const s = e.target.closest('[data-step]'); if (s) { step = s.dataset.step; renderDrawer(); $('#dBody').scrollTop = 0; return; }
   if (e.target.closest('[data-browse]')) { closeDrawer(); $('#shop').scrollIntoView({behavior: calm ? 'auto' : 'smooth'}); return; }
   const q = e.target.closest('[data-q]');
   if (q) { const l = cart[q.dataset.q]; l.qty = Math.max(1, Math.min(20, l.qty + +q.dataset.d)); counts(); renderDrawer(); return; }
   const r = e.target.closest('[data-rm]');
   if (r) { cart.splice(+r.dataset.rm, 1); counts(); renderDrawer(); }
+});
+$('#drawer').addEventListener('submit', async e => {
+  if (e.target.id !== 'authForm') return;
+  e.preventDefault();
+  const up = authMode === 'up', v = id => ($('#' + id) || {value: ''}).value.trim();
+  const email = v('aEmail'), pass = $('#aPass').value, out = $('#aErr'), btn = $('#aBtn');
+  if (up && (!v('aName') || !v('aPhone'))) { out.textContent = 'Please add your name and WhatsApp number.'; return; }
+  if (!/^\S+@\S+\.\S+$/.test(email)) { out.textContent = 'Please enter a valid email.'; return; }
+  if (pass.length < 8) { out.textContent = 'Use a password of at least 8 characters.'; return; }
+  btn.disabled = true; btn.textContent = up ? 'Creating account…' : 'Signing in…';
+  try {
+    up ? await signUp(v('aName'), email, v('aPhone'), pass) : await signIn(email, pass);
+    authMsg = '';
+    if (mode === 'basket') step = 'details';
+    renderDrawer();
+  } catch (err) { authMsg = authError(err, up ? 'up' : 'in'); btn.disabled = false; btn.textContent = up ? 'Create account' : 'Sign in'; out.className = 'err'; out.textContent = authMsg; }
 });
 async function placeOrder(e) {
   e.preventDefault();
@@ -693,8 +844,9 @@ async function placeOrder(e) {
     total ? `Subtotal: ${money(total)}${items.some(i => !i.price) ? ' + items on request' : ''}` : 'Please send me a quote.',
     `Name: ${me.cName}`, `Phone: ${me.cPhone}`, me.cArea ? `Area: ${me.cArea}` : '', v('cNotes') ? `Notes: ${v('cNotes')}` : ''].filter(Boolean).join('\n');
   const btn = $('#placeBtn'); btn.disabled = true; btn.textContent = 'Placing order…';
-  await saveOrder({ref, customer_name: me.cName, phone: me.cPhone, area: me.cArea, notes: v('cNotes'), items,
+  const ok = await saveOrder({ref, customer_name: me.cName, phone: me.cPhone, area: me.cArea, notes: v('cNotes'), items,
     item_count: items.reduce((a, i) => a + i.qty, 0), total, has_unpriced: items.some(i => !i.price)});
+  if (!ok) { btn.disabled = false; btn.textContent = 'Place order'; const n = document.createElement('p'); n.className = 'err'; n.textContent = "We couldn't place your order. Please check your connection and try again."; $('#co').append(n); return; }
   placed = {ref, text}; cart = []; counts(); renderDrawer();
 }
 
@@ -733,7 +885,7 @@ $('#sr').addEventListener('click', e => {
 (async () => {
   products = await loadProducts();
   cart = cart.filter(l => bySlug(l.slug)); favs = favs.filter(bySlug);
-  renderTop(); renderCats(); renderGrid(); counts();
+  renderTop(); renderCats(); renderGrid(); counts(); markSigned(); refreshSession();
   $('#waFoot').href = waLink('Hi Goldberg Beds');
   $('#yr').textContent = new Date().getFullYear();
   const h = decodeURIComponent(location.hash.slice(1)); if (h && bySlug(h)) openProduct(h, false);
