@@ -105,7 +105,16 @@ svg.i{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.25;str
 .card{position:relative}
 .card .p{position:relative;display:block;aspect-ratio:4/5;background:var(--tint);overflow:hidden}
 .card .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s var(--ease),transform 1.4s var(--ease)}
-.card .p img.alt{opacity:0}
+.ctrack{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.ctrack::-webkit-scrollbar{display:none}
+.ctrack a{position:relative;flex:0 0 100%;scroll-snap-align:start;overflow:hidden}
+.cdots{position:absolute;left:0;right:0;bottom:9px;display:flex;justify-content:center;gap:4px;pointer-events:none}
+.cdots i{width:4px;height:4px;border-radius:50%;background:#fff;opacity:.5;box-shadow:0 0 2px rgba(0,0,0,.35);transition:opacity .3s,transform .3s var(--ease)}
+.cdots i.on{opacity:1;transform:scale(1.25)}
+.cnum{position:absolute;left:8px;top:10px;padding:2px 7px;border-radius:999px;background:rgba(255,255,255,.82);color:#141414;font-size:10.5px;line-height:16px;font-variant-numeric:tabular-nums;pointer-events:none}
+.cnav{position:absolute;top:50%;margin-top:-15px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.88);color:#141414;opacity:0;transition:opacity .3s}
+.cnav svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cnav.l{left:8px}.cnav.r{right:8px}
 .fade{opacity:0}.fade.in{opacity:1}
 .card.wide{grid-column:1/-1}.card.wide .p{aspect-ratio:5/4}
 .heart{position:absolute;top:2px;right:2px;width:44px;height:44px;display:grid;place-items:center;color:var(--ink)}
@@ -192,7 +201,8 @@ form.co{display:flex;flex-direction:column;gap:14px;padding:6px 0 20px}
 .track figure{flex:0 0 100%;margin:0;scroll-snap-align:start}
 .track img{width:100%;height:100%;object-fit:cover}
 .prog{position:absolute;left:18px;right:18px;bottom:14px;display:flex;gap:4px}
-.prog i{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.45);overflow:hidden}
+.prog i{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.45);overflow:hidden;box-shadow:0 0 2px rgba(0,0,0,.3)}
+.pnum{position:absolute;right:18px;bottom:24px;font-size:11px;color:#fff;text-shadow:0 0 3px rgba(0,0,0,.45);font-variant-numeric:tabular-nums}
 .prog i::after{content:"";display:block;height:100%;width:0;background:#fff;transition:width .5s var(--ease)}
 .prog i.on::after{width:100%}
 .gnav{display:none}
@@ -229,7 +239,8 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
 .fly{position:fixed;z-index:70;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--ink);pointer-events:none;transition:transform .65s cubic-bezier(.5,-.3,.5,1),opacity .65s}
 @media(hover:hover){
  .addb:hover{box-shadow:inset 0 0 0 1px var(--ink)}
- .card .p:hover img.alt{opacity:1}.card .p:hover img{transform:scale(1.025)}
+ .card .p:hover .ctrack img,.card a.p:hover img{transform:scale(1.025)}
+ .card .p:hover .cnav{opacity:1}
  .trio a:hover img,.rail a:hover img{transform:scale(1.025)}
  .trio img,.rail img{transition:transform 1.4s var(--ease)}
  .plus:hover i{background:var(--ink);color:var(--bg)}
@@ -330,7 +341,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
  <button class="ib bubble press sx" id="pClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
  <div class="gal">
   <div class="track" id="track"></div>
-  <div class="prog" id="prog"></div>
+  <div class="prog" id="prog"></div><span class="pnum" id="pnum"></span>
   <button class="ib bubble press gnav gprev" id="gPrev" aria-label="Previous photo"><svg class="i" viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg></button>
   <button class="ib bubble press gnav gnext" id="gNext" aria-label="Next photo"><svg class="i" viewBox="0 0 24 24"><path d="m10 7 5 5-5 5"/></svg></button>
  </div>
@@ -470,10 +481,15 @@ function sorted(list) {
 }
 const cardHTML = (p, wide) => `
   <article class="card${wide ? ' wide' : ''}">
-    <a class="p" href="#${esc(p.slug)}" data-open="${esc(p.slug)}" aria-label="${esc(p.name)}">
+    ${p.images.length > 1 ? `<div class="p">
+      <div class="ctrack">${p.images.map((src, i) => `<a href="#${esc(p.slug)}" data-open="${esc(p.slug)}" aria-label="${esc(p.name)}, photo ${i + 1} of ${p.images.length}"><img class="fade" src="${esc(src)}" alt="${esc(p.name)}" loading="lazy"></a>`).join('')}</div>
+      <span class="cnum">1/${p.images.length}</span>
+      <span class="cdots">${p.images.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('')}</span>
+      <button class="cnav l" data-cstep="-1" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="m14 7-5 5 5 5"/></svg></button>
+      <button class="cnav r" data-cstep="1" aria-label="Next photo"><svg viewBox="0 0 24 24"><path d="m10 7 5 5-5 5"/></svg></button>
+    </div>` : `<a class="p" href="#${esc(p.slug)}" data-open="${esc(p.slug)}" aria-label="${esc(p.name)}">
       <img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy">
-      ${p.images[1] ? `<img class="alt" src="${esc(p.images[1])}" alt="" loading="lazy">` : ''}
-    </a>
+    </a>`}
     <button class="heart press" data-fav="${esc(p.slug)}" aria-pressed="${favs.includes(p.slug)}" aria-label="Save ${esc(p.name)}">${ICON.heart}</button>
     <div class="ci">
       <h3>${esc(p.name)}</h3><span class="pr">${priceText(p)}</span>
@@ -487,6 +503,15 @@ function renderGrid() {
   fadeIn($('#grid'));
 }
 $('#sort').addEventListener('change', e => { sortBy = e.target.value; renderGrid(); });
+
+document.addEventListener('scroll', e => {
+  const t = e.target; if (!t.classList || !t.classList.contains('ctrack')) return;
+  requestAnimationFrame(() => {
+    const i = Math.round(t.scrollLeft / t.clientWidth), p = t.parentElement;
+    p.querySelectorAll('.cdots i').forEach((d, j) => d.classList.toggle('on', j === i));
+    const c = p.querySelector('.cnum'); if (c) c.textContent = `${i + 1}/${t.children.length}`;
+  });
+}, {capture: true, passive: true});
 
 /* ---------- add / save ---------- */
 function visibleBasket() { return [...$$('[data-basket]')].find(b => b.offsetParent && getComputedStyle(b.closest('.hico, .bnav')).visibility !== 'hidden'); }
@@ -527,8 +552,10 @@ function toggleFav(slug, btn) {
 }
 document.addEventListener('click', e => {
   const f = e.target.closest('[data-fav]'); if (f) { e.preventDefault(); toggleFav(f.dataset.fav, f); return; }
+  const cs = e.target.closest('[data-cstep]');
+  if (cs) { e.preventDefault(); const t = cs.parentElement.querySelector('.ctrack'), n = t.children.length, i = Math.round(t.scrollLeft / t.clientWidth); t.scrollTo({left: ((i + +cs.dataset.cstep + n) % n) * t.clientWidth, behavior: calm ? 'auto' : 'smooth'}); return; }
   const a = e.target.closest('[data-add]'); if (a) { e.preventDefault(); addToCart(a.dataset.add, 1, '', a); confirmBtn(a); return; }
-  const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); closeSearch(true); openProduct(o.dataset.open, true); return; }
+  const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); closeSearch(true); const t = o.closest('.ctrack'); openProduct(o.dataset.open, true, t ? Math.round(t.scrollLeft / t.clientWidth) : 0); return; }
   if (e.target.closest('[data-open-basket]')) { openDrawer('basket'); return; }
   if (e.target.closest('[data-open-saved]')) { openDrawer('saved'); return; }
   if (e.target.closest('[data-open-search]')) { openSearch(); return; }
@@ -545,7 +572,7 @@ document.addEventListener('keydown', e => {
 
 /* ---------- product ---------- */
 const track = $('#track');
-function openProduct(slug, push) {
+function openProduct(slug, push, start = 0) {
   const p = bySlug(slug); if (!p) return;
   closeDrawer(true); current = p; qty = 1; $('#qv').textContent = 1; $('#pNote').value = '';
   $('#pCat').textContent = p.category; $('#pName').textContent = p.name; $('#pDesc').textContent = p.description || '';
@@ -557,7 +584,9 @@ function openProduct(slug, push) {
   track.innerHTML = p.images.map((src, i) => `<figure><img src="${esc(src)}" alt="${esc(p.name)}, photo ${i + 1}"${i ? ' loading="lazy"' : ''}></figure>`).join('');
   $('#prog').innerHTML = p.images.length > 1 ? p.images.map((_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('') : '';
   $('#gPrev').hidden = $('#gNext').hidden = p.images.length < 2;
+  $('#pnum').textContent = p.images.length > 1 ? `1 / ${p.images.length}` : '';
   track.scrollLeft = 0; $('#sheet').scrollTop = 0;
+  if (start) requestAnimationFrame(() => { track.scrollLeft = start * track.clientWidth; });
   $('#sheet').classList.add('on'); layer(true);
   if (push && location.hash.slice(1) !== p.slug) { pushed = true; location.hash = p.slug; }
   setTimeout(() => $('#pClose').focus({preventScroll: true}), 80);
@@ -576,6 +605,7 @@ function gal(d) {
 track.addEventListener('scroll', () => requestAnimationFrame(() => {
   const i = Math.round(track.scrollLeft / track.clientWidth);
   $$('#prog i').forEach((b, j) => b.classList.toggle('on', j <= i));
+  if (track.children.length > 1) $('#pnum').textContent = `${i + 1} / ${track.children.length}`;
 }), {passive: true});
 $('#gPrev').addEventListener('click', () => gal(-1));
 $('#gNext').addEventListener('click', () => gal(1));
