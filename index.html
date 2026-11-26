@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Goldberg Beds</title>
 <link rel="icon" href="img/mark.png">
-<meta name="theme-color" content="#f8f5f1">
+<meta name="theme-color" content="#ffffff">
 <meta name="description" content="Goldberg Beds Furniture — loft beds, bunk beds, beds and storage, built to order. Order on WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +13,13 @@
 <style>
 /* VOICE: a quiet boutique — calm, unhurried, a little playful in the details
    IDEA: the maker's lookbook: photographs set like prints on soft paper, with tiny captions
-   PICTURE: their own furniture — an offset trio up front, a rail of recent work, then the collection
+   PICTURE: their own furniture — a compact rail of recent work, then the collection straight away
    COLOUR and TYPE: warm paper, soft ink, one muted rose for hearts; Cinzel wordmark, Cormorant for names that matter, Jost for everything small
    LAYOUT: iPhone first — centred wordmark, thin category line, two-up grid, bottom bar; desktop breathes into an editorial grid */
 :root{color-scheme:light dark;
- --bg:light-dark(#f8f5f1,#121010);--paper:light-dark(#fdfbf8,#191615);--tint:light-dark(#efe9e2,#1d1a18);
- --ink:light-dark(#191514,#f1ebe4);--soft:light-dark(#8a8178,#a39a90);--faint:light-dark(#b9b0a6,#6e665e);
- --line:light-dark(#e8e1d8,#2c2724);--rose:light-dark(#b0707c,#d79aa6);
+ --bg:light-dark(#ffffff,#111111);--paper:light-dark(#ffffff,#181818);--tint:light-dark(#f6f5f3,#1c1c1c);
+ --ink:light-dark(#141414,#f2f2f2);--soft:light-dark(#7d7a76,#a3a09c);--faint:light-dark(#c4c0bb,#5e5b58);
+ --line:light-dark(#eeedeb,#2a2a2a);--rose:light-dark(#b0707c,#d79aa6);
  --veil:light-dark(rgba(25,21,20,.28),rgba(0,0,0,.55));
  --ease:cubic-bezier(.22,.8,.2,1);--nav:62px;--safe:env(safe-area-inset-bottom,0px)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
@@ -68,7 +68,12 @@ svg.i{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.25;str
 .cat{flex:none;height:42px;font-size:13px;color:var(--soft);position:relative;transition:color .3s}
 .cat::after{content:"";position:absolute;left:50%;bottom:7px;width:3px;height:3px;border-radius:50%;background:var(--ink);transform:translateX(-50%) scale(0);transition:transform .35s var(--ease)}
 .cat[aria-pressed=true]{color:var(--ink)}.cat[aria-pressed=true]::after{transform:translateX(-50%) scale(1)}
-/* hero */
+/* intro */
+.intro{padding-top:18px;padding-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.intro h1{font-size:19px;line-height:1.2}
+.intro .small{white-space:nowrap}
+@media(max-width:480px){.intro .small{display:none}.intro h1{font-size:20px}}
+/* hero (unused) */
 .hero{padding-top:22px}
 .lede{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:16px}
 .lede .link{white-space:nowrap;margin-bottom:3px}
@@ -83,20 +88,20 @@ svg.i{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.25;str
 .cap{display:flex;justify-content:space-between;gap:10px;padding-top:8px;font-size:12.5px}
 .cap span:last-child{color:var(--soft)}
 /* recent rail */
-.sec{padding-top:56px}
-.sech{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
-.sech h2{font-size:21px}
+.sec{padding-top:22px}
+.sech{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sech h2{font-size:13px;font-family:Jost,sans-serif;font-weight:400}
 .rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(5vw,18px);scroll-padding:0 max(5vw,18px)}
 .rail::-webkit-scrollbar{display:none}
-.rail a{flex:0 0 64vw;max-width:300px;scroll-snap-align:start}
+.rail a{flex:0 0 38vw;max-width:220px;scroll-snap-align:start}
 .rail .p{aspect-ratio:3/4;background:var(--tint);overflow:hidden}
 .rail img{width:100%;height:100%;object-fit:cover}
 .rctl{display:none;gap:4px}
 /* shop */
 .shopbar{position:sticky;top:58px;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.meta{display:flex;justify-content:space-between;align-items:center;padding:16px 0 18px}
+.meta{display:flex;justify-content:space-between;align-items:center;padding:10px 0 12px}
 .sort{appearance:none;-webkit-appearance:none;border:0;background:none;font-size:12.5px;color:var(--soft);padding:10px 0 10px 12px;text-align:right;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 10px}
 .card{position:relative}
 .card .p{position:relative;display:block;aspect-ratio:4/5;background:var(--tint);overflow:hidden}
 .card .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .9s var(--ease),transform 1.4s var(--ease)}
@@ -108,9 +113,14 @@ svg.i{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.25;str
 .heart[aria-pressed=true] svg,.saveb[aria-pressed=true] svg{fill:var(--rose);stroke:var(--rose)}
 .heart.pop svg,.saveb.pop svg{animation:pop .45s var(--ease)}
 @keyframes pop{45%{transform:scale(1.3)}}
-.ci{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;padding-top:9px}
+.ci{padding-top:9px}
 .ci h3{font-size:13px;font-weight:400;line-height:1.35}
 .ci .pr{display:block;font-size:12px;color:var(--soft);margin-top:2px;font-variant-numeric:tabular-nums}
+.addb{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:38px;margin-top:10px;border-radius:3px;box-shadow:inset 0 0 0 1px var(--line);font-size:12.5px;letter-spacing:.01em;color:var(--ink);transition:background .35s var(--ease),color .35s,box-shadow .35s}
+.addb svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.addb .ck{display:none}
+.addb.done{background:var(--ink);color:var(--bg);box-shadow:none}
+.addb.done .pl{display:none}.addb.done .ck{display:block;animation:pop .45s var(--ease)}
 .plus{flex:none;width:44px;height:44px;margin:-6px -6px 0 0;display:grid;place-items:center}
 .plus i{width:30px;height:30px;display:grid;place-items:center;transition:background .35s var(--ease),color .35s}
 .plus svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;transition:transform .35s var(--ease)}
@@ -167,10 +177,10 @@ form.co{display:flex;flex-direction:column;gap:14px;padding:6px 0 20px}
 .f{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--soft)}
 .f input,.f textarea{border:0;border-bottom:1px solid var(--line);background:none;padding:8px 0 10px;font-size:16px;color:var(--ink);border-radius:0;outline:none;resize:none;transition:border-color .3s}
 .f input:focus,.f textarea:focus{border-color:var(--ink)}
-.done{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:60px 6px}
-.done .ref{font:400 30px "Cormorant Garamond",serif;letter-spacing:.02em}
-.done .tick{width:54px;height:54px;display:grid;place-items:center;margin-bottom:8px}
-.done .tick svg{width:22px;height:22px;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .8s .15s var(--ease) forwards}
+.placed{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:60px 6px}
+.placed .ref{font:400 30px "Cormorant Garamond",serif;letter-spacing:.02em}
+.placed .tick{width:54px;height:54px;display:grid;place-items:center;margin-bottom:8px}
+.placed .tick svg{width:22px;height:22px;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .8s .15s var(--ease) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 /* product sheet */
 .sheet{position:fixed;z-index:50;inset:0;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;transform:translateY(100%);transition:transform .65s var(--ease);padding-bottom:calc(84px + var(--safe))}
@@ -218,6 +228,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
 /* fly dot */
 .fly{position:fixed;z-index:70;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--ink);pointer-events:none;transition:transform .65s cubic-bezier(.5,-.3,.5,1),opacity .65s}
 @media(hover:hover){
+ .addb:hover{box-shadow:inset 0 0 0 1px var(--ink)}
  .card .p:hover img.alt{opacity:1}.card .p:hover img{transform:scale(1.025)}
  .trio a:hover img,.rail a:hover img{transform:scale(1.025)}
  .trio img,.rail img{transition:transform 1.4s var(--ease)}
@@ -227,7 +238,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
  body{padding-bottom:0;font-size:15.5px}
  .bnav{display:none}
  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 18px}
- .card.wide{grid-column:span 2}.card.wide .p{aspect-ratio:auto;height:calc(100% - 52px)}
+ .card.wide{grid-column:span 2}.card.wide .p{aspect-ratio:auto;height:calc(100% - 100px)}
  .trio{grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
  .trio a:nth-child(1){grid-column:4/9;grid-row:1/3}
  .trio a:nth-child(2){grid-column:10/13;grid-row:1;margin-top:120px}
@@ -235,7 +246,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
  .hero{padding-top:44px;position:relative}
  .lede{position:absolute;left:max(5vw,18px);top:44px;flex-direction:column;align-items:flex-start;gap:16px;width:calc((100% - 2*max(5vw,18px)) * .25 - 18px);z-index:1}
  .lede h1{font-size:26px;max-width:none}
- .rail a{flex-basis:23vw;max-width:340px}
+ .rail a{flex-basis:15vw;max-width:240px}
  .rctl{display:flex}
  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
  .drawer{box-shadow:-30px 0 60px rgba(0,0,0,.05)}
@@ -263,18 +274,15 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
   <div class="hico">
    <button class="ib press" data-open-search aria-label="Search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button>
    <button class="ib press" data-open-saved aria-label="Saved"><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg><span class="count" data-count="fav"></span></button>
-   <button class="ib press" data-open-basket data-basket aria-label="Basket"><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg><span class="count" data-count="cart"></span></button>
+   <button class="ib press" data-open-basket data-basket aria-label="Cart"><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg><span class="count" data-count="cart"></span></button>
   </div>
  </div>
 </header>
 
 <main>
- <section class="wrap hero" aria-label="Introduction">
-  <div class="lede">
-   <h1 class="serif">Beds, bunks and lofts, built to order.</h1>
-   <a class="link" href="#shop">Shop the collection</a>
-  </div>
-  <div class="trio" id="trio"></div>
+ <section class="wrap intro" aria-label="Introduction">
+  <h1 class="serif">Beds, bunks and lofts, built to order.</h1>
+  <span class="small">Order on WhatsApp</span>
  </section>
 
  <section class="sec" id="recent" aria-labelledby="rwt">
@@ -294,7 +302,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
    </div>
    <div class="grid" id="grid"></div>
    <div class="steps">
-    <div><em>i</em><p><b>Choose.</b> Add pieces to your basket and note any size or colour.</p></div>
+    <div><em>i</em><p><b>Choose.</b> Add pieces to your cart and note any size or colour.</p></div>
     <div><em>ii</em><p><b>Send.</b> Your order comes to us on WhatsApp with a reference.</p></div>
     <div><em>iii</em><p><b>Confirm.</b> We reply with your quote and delivery date.</p></div>
    </div>
@@ -313,7 +321,7 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
  <a href="#shop" id="bnShop" aria-current="true"><svg class="i" viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="6" height="6" rx="1"/><rect x="13.5" y="4.5" width="6" height="6" rx="1"/><rect x="4.5" y="13.5" width="6" height="6" rx="1"/><rect x="13.5" y="13.5" width="6" height="6" rx="1"/></svg>Shop</a>
  <button data-open-search><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>Search</button>
  <button data-open-saved><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg>Saved<span class="count" data-count="fav"></span></button>
- <button data-open-basket data-basket><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg>Basket<span class="count" data-count="cart"></span></button>
+ <button data-open-basket data-basket><svg class="i" viewBox="0 0 24 24"><path d="M5.5 9h13l-1.1 10.5H6.6Z"/><path d="M9 9V7.5a3 3 0 0 1 6 0V9"/></svg>Cart<span class="count" data-count="cart"></span></button>
 </nav>
 
 <div class="veil" id="veil"></div>
@@ -340,14 +348,14 @@ details textarea{width:100%;border:0;border-bottom:1px solid var(--line);backgro
   </div>
   <div class="act">
    <div class="qty"><button id="qm" aria-label="Fewer">−</button><span id="qv">1</span><button id="qp" aria-label="More">+</button></div>
-   <button class="pill press" id="pAdd">Add to basket</button>
+   <button class="pill press" id="pAdd">Add to cart</button>
    <button class="saveb bubble press" id="pFav" aria-label="Save"><svg class="i" viewBox="0 0 24 24"><path d="M12 19.5s-7-4.3-7-9.4A3.9 3.9 0 0 1 12 7.8a3.9 3.9 0 0 1 7 2.3c0 5.1-7 9.4-7 9.4Z"/></svg></button>
   </div>
  </div>
 </article>
 
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
- <div class="dh"><h2 class="serif" id="dTitle">Basket</h2><button class="ib press" id="dClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div>
+ <div class="dh"><h2 class="serif" id="dTitle">Cart</h2><button class="ib press" id="dClose" aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div>
  <div class="db" id="dBody"></div>
  <div class="df" id="dFoot"></div>
 </aside>
@@ -431,9 +439,8 @@ function counts(bump) {
 function renderTop() {
   const f = products.filter(p => p.featured);
   const tile = p => `<a href="#${esc(p.slug)}" data-open="${esc(p.slug)}"><div class="p"><img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}"></div><div class="cap"><span>${esc(p.name)}</span><span>${esc(p.category)}</span></div></a>`;
-  $('#trio').innerHTML = f.slice(0, 3).map(tile).join('');
-  $('#rail').innerHTML = f.slice(3).map(p => `<a href="#${esc(p.slug)}" data-open="${esc(p.slug)}"><div class="p"><img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></div><div class="cap"><span>${esc(p.name)}</span></div></a>`).join('');
-  fadeIn($('#trio')); fadeIn($('#rail'));
+  $('#rail').innerHTML = f.map(p => `<a href="#${esc(p.slug)}" data-open="${esc(p.slug)}"><div class="p"><img class="fade" src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy"></div><div class="cap"><span>${esc(p.name)}</span></div></a>`).join('');
+  fadeIn($('#rail'));
 }
 const rail = $('#rail');
 const railStep = d => { const a = rail.querySelector('a'); if (a) rail.scrollBy({left: d * (a.getBoundingClientRect().width + 10), behavior: 'smooth'}); };
@@ -469,8 +476,8 @@ const cardHTML = (p, wide) => `
     </a>
     <button class="heart press" data-fav="${esc(p.slug)}" aria-pressed="${favs.includes(p.slug)}" aria-label="Save ${esc(p.name)}">${ICON.heart}</button>
     <div class="ci">
-      <div><h3>${esc(p.name)}</h3><span class="pr">${priceText(p)}</span></div>
-      <button class="plus press" data-add="${esc(p.slug)}" aria-label="Add ${esc(p.name)} to basket"><i class="bubble">${ICON.plus}</i></button>
+      <h3>${esc(p.name)}</h3><span class="pr">${priceText(p)}</span>
+      <button class="addb press" data-add="${esc(p.slug)}" aria-label="Add ${esc(p.name)} to cart">${ICON.plus}<span>Add to cart</span></button>
     </div>
   </article>`;
 function renderGrid() {
@@ -505,6 +512,7 @@ function addToCart(slug, n = 1, note = '', from) {
 function confirmBtn(btn, label) {
   if (!btn) return;
   btn.classList.add('done');
+  const sp = btn.querySelector('span'); if (sp) { sp.textContent = 'Added'; setTimeout(() => { sp.textContent = 'Add to cart'; }, 1400); }
   if (label) { const t = btn.textContent; btn.textContent = label; setTimeout(() => { btn.textContent = t; }, 1400); }
   setTimeout(() => btn.classList.remove('done'), 1400);
 }
@@ -594,25 +602,25 @@ function renderDrawer() {
     body.innerHTML = list.length ? list.map(p => `<div class="line">
         <img src="${esc(p.images[0])}" alt="${esc(p.name)}" data-open="${esc(p.slug)}">
         <div><h3>${esc(p.name)}</h3><small>${priceText(p)}</small><button class="rm" data-fav="${esc(p.slug)}">Remove</button></div>
-        <div class="lr"><button class="plus press" data-add="${esc(p.slug)}" aria-label="Add ${esc(p.name)} to basket"><i class="bubble">${ICON.plus}</i></button></div></div>`).join('')
+        <div class="lr"><button class="plus press" data-add="${esc(p.slug)}" aria-label="Add ${esc(p.name)} to cart"><i class="bubble">${ICON.plus}</i></button></div></div>`).join('')
       : blank('Nothing saved yet', 'Tap the heart on any piece to keep it here.', 'Browse the collection');
     foot.innerHTML = ''; foot.hidden = true; return;
   }
-  $('#dTitle').textContent = 'Basket';
+  $('#dTitle').textContent = 'Cart';
   foot.hidden = false;
   if (placed) {
-    body.innerHTML = `<div class="done"><span class="tick bubble"><svg class="i" viewBox="0 0 24 24"><path d="m5.5 12.5 4 4 9-9"/></svg></span>
+    body.innerHTML = `<div class="placed"><span class="tick bubble"><svg class="i" viewBox="0 0 24 24"><path d="m5.5 12.5 4 4 9-9"/></svg></span>
       <span class="small">Order received</span><span class="ref">${esc(placed.ref)}</span>
       <p class="note" style="max-width:260px">Send it to us on WhatsApp and we'll come back to you with your quote and delivery.</p></div>`;
     foot.innerHTML = `<a class="pill wide" href="${waLink(placed.text)}">Send on WhatsApp</a>`;
     return;
   }
   const lines = cart.map((l, i) => ({...l, i, p: bySlug(l.slug)})).filter(l => l.p);
-  if (!lines.length) { body.innerHTML = blank('Your basket is resting', 'When something catches your eye, it will wait for you here.', 'Browse the collection'); foot.innerHTML = ''; foot.hidden = true; return; }
+  if (!lines.length) { body.innerHTML = blank('Your cart is resting', 'When something catches your eye, it will wait for you here.', 'Browse the collection'); foot.innerHTML = ''; foot.hidden = true; return; }
   const total = lines.reduce((a, l) => a + (l.p.price || 0) * l.qty, 0), unpriced = lines.some(l => !l.p.price);
   if (step === 'details') {
     const me = store.get('gb_me', {});
-    body.innerHTML = `<button class="back" data-step="list"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="m14 7-5 5 5 5"/></svg>Basket</button>
+    body.innerHTML = `<button class="back" data-step="list"><svg class="i" viewBox="0 0 24 24" style="width:15px;height:15px"><path d="m14 7-5 5 5 5"/></svg>Cart</button>
       <form class="co" id="co">
         <label class="f">Name<input id="cName" required autocomplete="name" maxlength="120" value="${esc(me.cName || '')}"></label>
         <label class="f">WhatsApp number<input id="cPhone" required type="tel" autocomplete="tel" maxlength="40" value="${esc(me.cPhone || '')}"></label>
